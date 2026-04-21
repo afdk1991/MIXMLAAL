@@ -224,6 +224,30 @@ kubectl apply -f customer-service-deployment.yaml
 echo -e "${YELLOW}Deploying Customer Service system service...${NC}"
 kubectl apply -f customer-service-service.yaml
 
+# 部署安全服务
+echo -e "${YELLOW}Deploying Security service...${NC}"
+kubectl apply -f security-service-deployment.yaml
+echo -e "${YELLOW}Deploying Security service...${NC}"
+kubectl apply -f security-service-service.yaml
+
+# 部署开发者平台
+echo -e "${YELLOW}Deploying Developer Platform...${NC}"
+kubectl apply -f developer-platform-deployment.yaml
+echo -e "${YELLOW}Deploying Developer Platform service...${NC}"
+kubectl apply -f developer-platform-service.yaml
+
+# 部署国际化服务
+echo -e "${YELLOW}Deploying i18n service...${NC}"
+kubectl apply -f i18n-service-deployment.yaml
+echo -e "${YELLOW}Deploying i18n service...${NC}"
+kubectl apply -f i18n-service-service.yaml
+
+# 部署AI服务
+echo -e "${YELLOW}Deploying AI service...${NC}"
+kubectl apply -f ai-service-deployment.yaml
+echo -e "${YELLOW}Deploying AI service...${NC}"
+kubectl apply -f ai-service-service.yaml
+
 # 部署API网关
 echo -e "${YELLOW}Deploying API Gateway...${NC}"
 kubectl apply -f api-gateway-deployment.yaml

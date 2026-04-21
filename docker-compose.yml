@@ -924,6 +924,176 @@ services:
       timeout: 10s
       retries: 3
 
+  # Security service
+  security-service:
+    build:
+      context: ./apps/services/security-service
+      dockerfile: Dockerfile
+    ports:
+      - "3020:3020"
+    environment:
+      - NODE_ENV=development
+      - SECURITY_SERVICE_PORT=3020
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - KAFKA_HOST=kafka
+      - KAFKA_PORT=9092
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=mixmlaal
+      - MYSQL_USER=mixmlaal
+      - MYSQL_PASSWORD=mixmlaal
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+      - SERVICE_HOST=security-service
+      - NACOS_HOST=nacos
+      - NACOS_PORT=8848
+      - NACOS_NAMESPACE=mixmlaal
+      - NACOS_GROUP=DEFAULT_GROUP
+      - ISTIO_PROXY_HOST=istio-proxy
+      - ISTIO_PROXY_PORT=15006
+    depends_on:
+      - consul
+      - nacos
+      - redis
+      - kafka
+      - mysql
+      - istio-proxy
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3020/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Developer platform service
+  developer-platform:
+    build:
+      context: ./apps/services/developer-platform
+      dockerfile: Dockerfile
+    ports:
+      - "3021:3021"
+    environment:
+      - NODE_ENV=development
+      - DEVELOPER_PLATFORM_PORT=3021
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - KAFKA_HOST=kafka
+      - KAFKA_PORT=9092
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=mixmlaal
+      - MYSQL_USER=mixmlaal
+      - MYSQL_PASSWORD=mixmlaal
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+      - SERVICE_HOST=developer-platform
+      - NACOS_HOST=nacos
+      - NACOS_PORT=8848
+      - NACOS_NAMESPACE=mixmlaal
+      - NACOS_GROUP=DEFAULT_GROUP
+      - ISTIO_PROXY_HOST=istio-proxy
+      - ISTIO_PROXY_PORT=15006
+      - JWT_SECRET=your-secret-key
+    depends_on:
+      - consul
+      - nacos
+      - redis
+      - kafka
+      - mysql
+      - istio-proxy
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3021/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # i18n service
+  i18n-service:
+    build:
+      context: ./apps/services/i18n-service
+      dockerfile: Dockerfile
+    ports:
+      - "3022:3022"
+    environment:
+      - NODE_ENV=development
+      - I18N_SERVICE_PORT=3022
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - KAFKA_HOST=kafka
+      - KAFKA_PORT=9092
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=mixmlaal
+      - MYSQL_USER=mixmlaal
+      - MYSQL_PASSWORD=mixmlaal
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+      - SERVICE_HOST=i18n-service
+      - NACOS_HOST=nacos
+      - NACOS_PORT=8848
+      - NACOS_NAMESPACE=mixmlaal
+      - NACOS_GROUP=DEFAULT_GROUP
+      - ISTIO_PROXY_HOST=istio-proxy
+      - ISTIO_PROXY_PORT=15006
+    depends_on:
+      - consul
+      - nacos
+      - redis
+      - kafka
+      - mysql
+      - istio-proxy
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3022/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # AI service
+  ai-service:
+    build:
+      context: ./apps/services/ai-service
+      dockerfile: Dockerfile
+    ports:
+      - "3023:3023"
+    environment:
+      - NODE_ENV=development
+      - AI_SERVICE_PORT=3023
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - KAFKA_HOST=kafka
+      - KAFKA_PORT=9092
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=mixmlaal
+      - MYSQL_USER=mixmlaal
+      - MYSQL_PASSWORD=mixmlaal
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+      - SERVICE_HOST=ai-service
+      - NACOS_HOST=nacos
+      - NACOS_PORT=8848
+      - NACOS_NAMESPACE=mixmlaal
+      - NACOS_GROUP=DEFAULT_GROUP
+      - ISTIO_PROXY_HOST=istio-proxy
+      - ISTIO_PROXY_PORT=15006
+      - MONGO_URI=mongodb://mongo:27017/mixmlaal
+    depends_on:
+      - consul
+      - nacos
+      - redis
+      - kafka
+      - mysql
+      - istio-proxy
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3023/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
   # API gateway
   api-gateway:
     build:
@@ -954,6 +1124,10 @@ services:
       - SUPPLY_CHAIN_URL=http://supply-chain:3017
       - OPERATION_PLATFORM_URL=http://operation-platform:3018
       - CUSTOMER_SERVICE_URL=http://customer-service:3019
+      - SECURITY_SERVICE_URL=http://security-service:3020
+      - DEVELOPER_PLATFORM_URL=http://developer-platform:3021
+      - I18N_SERVICE_URL=http://i18n-service:3022
+      - AI_SERVICE_URL=http://ai-service:3023
       - CONSUL_HOST=consul
       - CONSUL_PORT=8500
       - NACOS_HOST=nacos
@@ -984,6 +1158,10 @@ services:
       - supply-chain
       - operation-platform
       - customer-service
+      - security-service
+      - developer-platform
+      - i18n-service
+      - ai-service
       - istio-proxy
     restart: always
     healthcheck:
