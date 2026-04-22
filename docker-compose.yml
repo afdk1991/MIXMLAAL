@@ -942,7 +942,7 @@ services:
       - MYSQL_PORT=3306
       - MYSQL_DATABASE=mixmlaal
       - MYSQL_USER=mixmlaal
-      - MYSQL_PASSWORD=mixmlaal
+      - MYSQL_PASSWORD=${DB_PASSWORD:-mixmlaal}
       - CONSUL_HOST=consul
       - CONSUL_PORT=8500
       - SERVICE_HOST=security-service

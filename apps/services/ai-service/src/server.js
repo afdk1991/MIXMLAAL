@@ -12,7 +12,7 @@ const dotenv = require('dotenv');
 const axios = require('axios');
 const Joi = require('joi');
 const tf = require('@tensorflow/tfjs-node');
-const ml5 = require('ml5');
+const ml5 = require('@ml5/ml5');
 const math = require('mathjs');
 const Papa = require('papaparse');
 const csv = require('csv-parser');
@@ -72,6 +72,8 @@ app.use(expressWinston.logger({
 const redisClient = Redis.createClient({
   url: `redis://${process.env.REDIS_HOST || 'redis'}:${process.env.REDIS_PORT || 6379}`
 });
+
+redisClient.connect().catch(console.error);
 
 // 初始化Consul客户端
 const consul = new Consul({
