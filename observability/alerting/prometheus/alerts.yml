@@ -1,0 +1,232 @@
+groups:
+  - name: mixmlaal-service-alerts
+    interval: 30s
+    rules:
+      - alert: ServiceDown
+        expr: up{job="mixmlaal-services"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: "{{ $labels.job }}"
+        annotations:
+          summary: "Service {{ $labels.job }} is down"
+          description: "{{ $labels.job }} has been down for more than 1 minute"
+
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+          service: "{{ $labels.service }}"
+        annotations:
+          summary: "High error rate on {{ $labels.service }}"
+          description: "Error rate is {{ $value | humanizePercentage }} on {{ $labels.service }}"
+
+      - alert: CriticalErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.20
+        for: 2m
+        labels:
+          severity: critical
+          service: "{{ $labels.service }}"
+        annotations:
+          summary: "Critical error rate on {{ $labels.service }}"
+          description: "Error rate is {{ $value | humanizePercentage }} on {{ $labels.service }}"
+
+      - alert: HighLatency
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 2
+        for: 5m
+        labels:
+          severity: warning
+          service: "{{ $labels.service }}"
+        annotations:
+          summary: "High latency on {{ $labels.service }}"
+          description: "95th percentile latency is {{ $value | humanizeDuration }} on {{ $labels.service }}"
+
+      - alert: CriticalLatency
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 10
+        for: 3m
+        labels:
+          severity: critical
+          service: "{{ $labels.service }}"
+        annotations:
+          summary: "Critical latency on {{ $labels.service }}"
+          description: "95th percentile latency is {{ $value | humanizeDuration }} on {{ $labels.service }}"
+
+  - name: mixmlaal-infrastructure-alerts
+    interval: 30s
+    rules:
+      - alert: HighCPUUsage
+        expr: cpu_usage_percent > 80
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage is {{ $value }}% on {{ $labels.instance }}"
+
+      - alert: CriticalCPUUsage
+        expr: cpu_usage_percent > 95
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical CPU usage"
+          description: "CPU usage is {{ $value }}% on {{ $labels.instance }}"
+
+      - alert: HighMemoryUsage
+        expr: memory_usage_percent > 85
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is {{ $value }}% on {{ $labels.instance }}"
+
+      - alert: CriticalMemoryUsage
+        expr: memory_usage_percent > 95
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical memory usage"
+          description: "Memory usage is {{ $value }}% on {{ $labels.instance }}"
+
+      - alert: HighDiskUsage
+        expr: disk_usage_percent > 85
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High disk usage"
+          description: "Disk usage is {{ $value }}% on {{ $labels.instance }}"
+
+      - alert: CriticalDiskUsage
+        expr: disk_usage_percent > 95
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical disk usage"
+          description: "Disk usage is {{ $value }}% on {{ $labels.instance }}"
+
+  - name: mixmlaal-database-alerts
+    interval: 30s
+    rules:
+      - alert: DatabaseConnectionHigh
+        expr: mysql_global_status_threads_connected / mysql_global_variables_max_connections * 100 > 80
+        for: 10m
+        labels:
+          severity: warning
+          service: mysql
+        annotations:
+          summary: "High database connection usage"
+          description: "Database connection usage is {{ $value }}% on {{ $labels.instance }}"
+
+      - alert: DatabaseConnectionCritical
+        expr: mysql_global_status_threads_connected / mysql_global_variables_max_connections * 100 > 95
+        for: 5m
+        labels:
+          severity: critical
+          service: mysql
+        annotations:
+          summary: "Critical database connection usage"
+          description: "Database connection usage is {{ $value }}% on {{ $labels.instance }}"
+
+      - alert: DatabaseSlowQueries
+        expr: rate(mysql_global_status_slow_queries[5m]) > 10
+        for: 10m
+        labels:
+          severity: warning
+          service: mysql
+        annotations:
+          summary: "High rate of slow queries"
+          description: "Slow query rate is {{ $value }} per second on {{ $labels.instance }}"
+
+  - name: mixmlaal-redis-alerts
+    interval: 30s
+    rules:
+      - alert: RedisMemoryHigh
+        expr: redis_memory_used_bytes / redis_memory_max_bytes * 100 > 80
+        for: 10m
+        labels:
+          severity: warning
+          service: redis
+        annotations:
+          summary: "High Redis memory usage"
+          description: "Redis memory usage is {{ $value }}% on {{ $labels.instance }}"
+
+      - alert: RedisMemoryCritical
+        expr: redis_memory_used_bytes / redis_memory_max_bytes * 100 > 95
+        for: 5m
+        labels:
+          severity: critical
+          service: redis
+        annotations:
+          summary: "Critical Redis memory usage"
+          description: "Redis memory usage is {{ $value }}% on {{ $labels.instance }}"
+
+      - alert: RedisConnectedClientsHigh
+        expr: redis_connected_clients > 1000
+        for: 10m
+        labels:
+          severity: warning
+          service: redis
+        annotations:
+          summary: "High number of Redis connected clients"
+          description: "Redis has {{ $value }} connected clients on {{ $labels.instance }}"
+
+  - name: mixmlaal-kafka-alerts
+    interval: 30s
+    rules:
+      - alert: KafkaConsumerLag
+        expr: kafka_consumer_lag_seconds > 1000
+        for: 15m
+        labels:
+          severity: warning
+          service: kafka
+        annotations:
+          summary: "Kafka consumer lag is high"
+          description: "Consumer lag is {{ $value }} seconds on {{ $labels.instance }}"
+
+      - alert: KafkaUnderReplicatedPartitions
+        expr: kafka_cluster_partition_underreplicated > 0
+        for: 5m
+        labels:
+          severity: critical
+          service: kafka
+        annotations:
+          summary: "Kafka under-replicated partitions"
+          description: "There are {{ $value }} under-replicated partitions on {{ $labels.instance }}"
+
+  - name: mixmlaal-business-alerts
+    interval: 60s
+    rules:
+      - alert: OrderSuccessRateLow
+        expr: rate(orders_total{status="success"}[5m]) / rate(orders_total[5m]) < 0.95
+        for: 10m
+        labels:
+          severity: warning
+          service: order-service
+        annotations:
+          summary: "Low order success rate"
+          description: "Order success rate is {{ $value | humanizePercentage }}"
+
+      - alert: PaymentSuccessRateLow
+        expr: rate(payments_total{status="success"}[5m]) / rate(payments_total[5m]) < 0.99
+        for: 5m
+        labels:
+          severity: critical
+          service: payment-service
+        annotations:
+          summary: "Low payment success rate"
+          description: "Payment success rate is {{ $value | humanizePercentage }}"
+
+      - alert: HighRideRequestLatency
+        expr: histogram_quantile(0.95, rate(ride_requests_duration_seconds_bucket[5m])) > 30
+        for: 10m
+        labels:
+          severity: warning
+          service: ride-service
+        annotations:
+          summary: "High ride request latency"
+          description: "95th percentile ride request latency is {{ $value | humanizeDuration }}"

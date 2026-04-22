@@ -1,0 +1,222 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: elasticsearch:7.17.13
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -q '\"status\":\"green\"\\|\"status\":\"yellow\"'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  logstash:
+    image: logstash:7.17.13
+    container_name: logstash
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    environment:
+      - "LS_JAVA_OPTS=-Xms256m -Xmx256m"
+    restart: always
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: kibana:7.17.13
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - SERVER_NAME=mixmlaal-kibana
+      - SERVER_HOST=0.0.0.0
+    ports:
+      - "5601:5601"
+    restart: always
+    depends_on:
+      - elasticsearch
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:5601/api/status | grep -q '\"overall\":{\"level\":\"available\"}'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  filebeat:
+    image: elastic/filebeat:7.17.13
+    container_name: filebeat
+    user: root
+    volumes:
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: always
+    depends_on:
+      - logstash
+    command: filebeat -e -strict.perms=false
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.48
+    container_name: jaeger
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+      - "14268:14268"
+      - "14250:14250"
+      - "9411:9411"
+    environment:
+      - SPAN_STORAGE_TYPE=elasticsearch
+      - ES_SERVER_URLS=http://elasticsearch:9200
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
+      - LOG_LEVEL=info
+      - QUERY_BASE_PATH=/jaeger
+    restart: always
+    depends_on:
+      - elasticsearch
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:16686/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  jaeger-agent:
+    image: jaegertracing/jaeger-agent:1.48
+    container_name: jaeger-agent
+    ports:
+      - "5775:5775/udp"
+      - "5778:5778"
+      - "6832:6832/udp"
+      - "35000:35000"
+    command: ["--reporter.grpc.host-port=jaeger:14250"]
+    environment:
+      - LOG_LEVEL=info
+    restart: always
+    depends_on:
+      - jaeger
+
+  alertmanager:
+    image: prom/alertmanager:v0.26.0
+    container_name: alertmanager
+    ports:
+      - "9093:9093"
+      - "9094:9094"
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+      - alertmanager-data:/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
+      - '--storage.path=/alertmanager'
+    restart: always
+
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    restart: always
+
+  grafana:
+    image: grafana/grafana:10.0.0
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    restart: always
+    depends_on:
+      - prometheus
+
+  logging-aggregator:
+    build:
+      context: ./logging-aggregator
+      dockerfile: Dockerfile
+    ports:
+      - "3024:3024"
+    environment:
+      - NODE_ENV=production
+      - LOGGING_AGGREGATOR_PORT=3024
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+      - FLUENTD_HOST=logstash
+      - FLUENTD_PORT=5000
+      - LOG_LEVEL=info
+    volumes:
+      - ./logging-aggregator/logs:/app/logs
+    restart: always
+    depends_on:
+      - elasticsearch
+      - logstash
+
+  tracing-proxy:
+    build:
+      context: ./tracing-proxy
+      dockerfile: Dockerfile
+    ports:
+      - "3025:3025"
+    environment:
+      - NODE_ENV=production
+      - TRACING_PROXY_PORT=3025
+      - JAEGER_URL=http://jaeger:14268/api/traces
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+      - LOG_LEVEL=info
+    volumes:
+      - ./tracing-proxy/logs:/app/logs
+    restart: always
+    depends_on:
+      - jaeger
+      - elasticsearch
+
+  metrics-collector:
+    build:
+      context: ./metrics-collector
+      dockerfile: Dockerfile
+    ports:
+      - "3026:3026"
+    environment:
+      - NODE_ENV=production
+      - METRICS_COLLECTOR_PORT=3026
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - LOG_LEVEL=info
+    volumes:
+      - ./metrics-collector/logs:/app/logs
+    restart: always
+    depends_on:
+      - redis
+
+volumes:
+  elasticsearch-data:
+    driver: local
+  alertmanager-data:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local

@@ -1,0 +1,117 @@
+global:
+  resolve_timeout: 5m
+  smtp_smarthost: '{{ .Env.SMTP_SMARTHOST | default "smtp.example.com:587" }}'
+  smtp_from: '{{ .Env.SMTP_FROM | default "alertmanager@mxmlaal.com" }}'
+  smtp_auth_username: '{{ .Env.SMTP_AUTH_USERNAME | default "alertmanager@mxmlaal.com" }}'
+  smtp_auth_password: '{{ .Env.SMTP_AUTH_PASSWORD | default "your-smtp-password" }}'
+  smtp_require_tls: true
+
+templates:
+  - '/etc/alertmanager/template/*.tmpl'
+
+route:
+  group_by: ['alertname', 'severity', 'service']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 12h
+  receiver: 'default-receiver'
+  routes:
+    - match:
+        severity: critical
+      receiver: 'critical-receiver'
+      continue: true
+    - match:
+        severity: warning
+      receiver: 'warning-receiver'
+      continue: true
+    - match:
+        service: api-gateway
+      receiver: 'gateway-receiver'
+      continue: true
+    - match:
+        service: user-service
+      receiver: 'user-service-receiver'
+      continue: true
+    - match:
+        service: payment-service
+      receiver: 'payment-receiver'
+
+receivers:
+  - name: 'default-receiver'
+    email_configs:
+      - to: 'devops@mxmlaal.com'
+        send_resolved: true
+        headers:
+          subject: 'MixMLAAL Alert: {{ .GroupLabels.alertname }}'
+    webhook_configs:
+      - url: 'http://webhook-server:5000/alerts'
+        send_resolved: true
+
+  - name: 'critical-receiver'
+    email_configs:
+      - to: 'oncall@mxmlaal.com'
+        send_resolved: true
+        headers:
+          subject: 'CRITICAL: {{ .GroupLabels.alertname }}'
+    webhook_configs:
+      - url: 'http://webhook-server:5000/alerts/critical'
+        send_resolved: true
+    pagerduty_configs:
+      - service_key: 'your-pagerduty-service-key'
+        severity: critical
+        details:
+          firing: '{{ .GroupLabels.alertname }}'
+          severity: critical
+
+  - name: 'warning-receiver'
+    email_configs:
+      - to: 'dev-team@mxmlaal.com'
+        send_resolved: true
+        headers:
+          subject: 'WARNING: {{ .GroupLabels.alertname }}'
+    webhook_configs:
+      - url: 'http://webhook-server:5000/alerts/warning'
+        send_resolved: true
+
+  - name: 'gateway-receiver'
+    email_configs:
+      - to: 'gateway-team@mxmlaal.com'
+        send_resolved: true
+        headers:
+          subject: 'Gateway Alert: {{ .GroupLabels.alertname }}'
+
+  - name: 'user-service-receiver'
+    email_configs:
+      - to: 'user-team@mxmlaal.com'
+        send_resolved: true
+        headers:
+          subject: 'User Service Alert: {{ .GroupLabels.alertname }}'
+
+  - name: 'payment-receiver'
+    email_configs:
+      - to: 'payment-team@mxmlaal.com'
+        send_resolved: true
+        headers:
+          subject: 'Payment Alert: {{ .GroupLabels.alertname }}'
+    webhook_configs:
+      - url: 'http://webhook-server:5000/alerts/payment'
+        send_resolved: true
+
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'service', 'instance']
+
+  - source_match:
+      alertname: 'InstanceDown'
+    target_match:
+      alertname: 'ServiceDown'
+    equal: ['instance']
+
+  - source_match:
+      service: 'payment-service'
+    target_match_re:
+      service: '.*'
+    equal: ['alertname']

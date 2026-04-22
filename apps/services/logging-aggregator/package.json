@@ -1,0 +1,48 @@
+{
+  "name": "logging-aggregator",
+  "version": "1.0.0.0",
+  "description": "Logging aggregator service for MixMLAAL platform - collects and forwards logs to ELK stack",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "lint": "eslint src/**/*.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.11.2",
+    "helmet": "^7.0.0",
+    "cors": "^2.8.5",
+    "winston": "^3.11.0",
+    "winston-elasticsearch": "^0.17.4",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.2",
+    "joi": "^17.11.0",
+    "fluent-logger": "^0.10.0",
+    "morgan": "^1.10.0",
+    "rotate-file-stream": "^3.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "eslint": "^8.53.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  },
+  "keywords": [
+    "logging",
+    "aggregator",
+    "elk",
+    "elasticsearch",
+    "monitoring"
+  ],
+  "author": "MixMLAAL Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

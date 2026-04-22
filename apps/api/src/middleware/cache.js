@@ -1,53 +1,54 @@
-const { cache } = require('../config/redis');
+const cacheManager = require('../config/cache');
 
 // 缓存中间件
-const cacheMiddleware = (duration = 3600) => {
+function cacheMiddleware(duration = 60) {
   return async (req, res, next) => {
+    // 只缓存GET请求
+    if (req.method !== 'GET') {
+      return next();
+    }
+
     // 生成缓存键
-    const key = `cache:${req.originalUrl}`;
+    const cacheKey = `api:${req.originalUrl}`;
 
     try {
-      // 尝试从缓存获取数据
-      const cachedData = await cache.get(key);
+      // 尝试从缓存获取
+      const cachedData = await cacheManager.get(cacheKey);
       if (cachedData) {
+        console.log(`Cache hit for: ${req.originalUrl}`);
         return res.json(cachedData);
       }
 
-      // 重写res.json方法，在返回响应时缓存数据
+      // 缓存未命中，重写res.json方法
       const originalJson = res.json;
       res.json = function(data) {
-        // 只缓存成功的响应
-        if (data.code === 200) {
-          cache.set(key, data, duration);
+        // 缓存响应数据
+        if (data && data.status === 'success') {
+          cacheManager.set(cacheKey, data, duration);
         }
         return originalJson.call(this, data);
       };
 
       next();
     } catch (error) {
-      console.error('缓存中间件错误:', error);
+      console.error('Cache middleware error:', error);
       next();
     }
   };
-};
+}
 
 // 清除缓存的中间件
-const clearCacheMiddleware = (pattern) => {
+function clearCacheMiddleware(pattern) {
   return async (req, res, next) => {
     try {
-      // 执行后续中间件
-      next();
-
-      // 清除匹配的缓存
-      if (pattern) {
-        // 这里简化处理，实际应该使用Redis的SCAN命令查找匹配的键
-        console.log(`清除缓存: ${pattern}`);
-      }
+      await cacheManager.delByPattern(pattern);
+      console.log(`Cache cleared for pattern: ${pattern}`);
     } catch (error) {
-      console.error('清除缓存错误:', error);
+      console.error('Clear cache error:', error);
     }
+    next();
   };
-};
+}
 
 module.exports = {
   cacheMiddleware,

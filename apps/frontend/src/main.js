@@ -5,6 +5,13 @@ import App from './App.vue'
 import { setRouter } from './utils/uni'
 import { getVersionInfo } from '../../shared/utils/version.js'
 import { autoCheckVersion } from '../../shared/services/version-checker.js'
+import { preloadCriticalResources, lazyLoadImages, monitorPerformance, optimizeFirstPaint } from './utils/performance.js'
+
+// 优化首屏加载
+optimizeFirstPaint()
+
+// 预加载关键资源
+preloadCriticalResources()
 
 const app = createApp(App)
 
@@ -29,3 +36,11 @@ console.log('MIXMLAAL Frontend App Version:', versionInfo.fullVersion)
 
 // 自动检查版本更新
 autoCheckVersion(versionInfo.version)
+
+// 监控页面性能
+monitorPerformance()
+
+// 懒加载图片
+window.addEventListener('load', () => {
+  lazyLoadImages()
+})

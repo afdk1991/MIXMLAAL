@@ -1,0 +1,72 @@
+groups:
+- name: api_service_alerts
+  rules:
+  # API服务可用性告警
+  - alert: ApiServiceDown
+    expr: up{job="api-service"} == 0
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "API服务不可用"
+      description: "API服务 {{ $labels.instance }} 已停止响应超过5分钟"
+
+  # 高CPU使用率告警
+  - alert: HighCpuUsage
+    expr: (100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "高CPU使用率"
+      description: "服务器 {{ $labels.instance }} CPU使用率超过80%"
+
+  # 高内存使用率告警
+  - alert: HighMemoryUsage
+    expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 85
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "高内存使用率"
+      description: "服务器 {{ $labels.instance }} 内存使用率超过85%"
+
+  # 数据库连接数告警
+  - alert: HighDbConnections
+    expr: mysql_global_status_threads_connected > 500
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "数据库连接数过高"
+      description: "数据库连接数超过500"
+
+  # Redis内存使用率告警
+  - alert: HighRedisMemory
+    expr: redis_memory_used_bytes / redis_total_system_memory_bytes * 100 > 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Redis内存使用率过高"
+      description: "Redis内存使用率超过80%"
+
+  # API响应时间告警
+  - alert: HighApiResponseTime
+    expr: api_response_time_seconds > 0.5
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "API响应时间过长"
+      description: "API响应时间超过0.5秒"
+
+  # 错误率告警
+  - alert: HighErrorRate
+    expr: sum(rate(api_errors_total[5m])) / sum(rate(api_requests_total[5m])) > 0.05
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "API错误率过高"
+      description: "API错误率超过5%"
