@@ -1,6 +1,6 @@
 {
   "name": "mixmlaal-fullstack",
-  "version": "0.0.0.4",
+  "version": "0.0.4",
   "description": "MIXMLAAL Multi-Stack Backend Admin System",
   "private": true,
   "workspaces": [

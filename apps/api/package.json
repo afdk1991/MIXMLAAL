@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "0.0.0.4",
+  "version": "0.0.4",
   "description": "前置仓轻客配送系统后端API",
   "main": "src/app.js",
   "scripts": {

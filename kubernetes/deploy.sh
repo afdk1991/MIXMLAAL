@@ -227,7 +227,6 @@ kubectl apply -f customer-service-service.yaml
 # 部署安全服务
 echo -e "${YELLOW}Deploying Security service...${NC}"
 kubectl apply -f security-service-deployment.yaml
-echo -e "${YELLOW}Deploying Security service...${NC}"
 kubectl apply -f security-service-service.yaml
 
 # 部署开发者平台

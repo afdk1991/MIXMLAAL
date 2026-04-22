@@ -1,6 +1,6 @@
 {
   "name": "@mixmlaal/frontend",
-  "version": "0.0.0.4",
+  "version": "0.0.4",
   "description": "MIXMLAAL 前端应用",
   "private": true,
   "scripts": {
