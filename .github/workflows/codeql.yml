@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript' ]
+        language: [ 'javascript', 'python', 'java' ]
 
     steps:
     - name: Checkout repository
@@ -31,17 +31,43 @@ jobs:
       with:
         languages: ${{ matrix.language }}
 
-    - name: Set up Node.js
+    - name: Set up Node.js for JavaScript/TypeScript
+      if: matrix.language == 'javascript'
       uses: actions/setup-node@v3
       with:
         node-version: '16'
         cache: 'npm'
 
-    - name: Install dependencies
+    - name: Install JavaScript/TypeScript dependencies
+      if: matrix.language == 'javascript'
       run: npm install
 
-    - name: Build project
+    - name: Build JavaScript/TypeScript project
+      if: matrix.language == 'javascript'
       run: npm run build
+
+    - name: Set up Java for Java analysis
+      if: matrix.language == 'java'
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Build Java project with Maven
+      if: matrix.language == 'java'
+      run: mvn clean compile -f apps/spring-boot-admin/pom.xml
+
+    - name: Set up Python for Python analysis
+      if: matrix.language == 'python'
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+
+    - name: Install Python dependencies
+      if: matrix.language == 'python'
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f apps/fastapi-admin/requirements.txt ]; then pip install -r apps/fastapi-admin/requirements.txt; fi
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
