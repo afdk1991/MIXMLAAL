@@ -1,39 +1,34 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/db');
+const { sequelize } = require('../config/database');
 
 const Role = sequelize.define('Role', {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.BIGINT,
     primaryKey: true,
     autoIncrement: true
   },
   name: {
     type: DataTypes.STRING(50),
-    allowNull: false,
-    unique: true
+    unique: true,
+    allowNull: false
   },
   description: {
-    type: DataTypes.STRING(200),
-    allowNull: true
+    type: DataTypes.STRING(255)
   },
-  status: {
-    type: DataTypes.ENUM('active', 'inactive'),
-    allowNull: false,
-    defaultValue: 'active'
-  },
-  createdAt: {
+  created_at: {
     type: DataTypes.DATE,
-    allowNull: false,
     defaultValue: DataTypes.NOW
   },
-  updatedAt: {
+  updated_at: {
     type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW
+    defaultValue: DataTypes.NOW,
+    onUpdate: DataTypes.NOW
   }
 }, {
   tableName: 'roles',
-  timestamps: true
+  timestamps: true,
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
 });
 
 module.exports = Role;

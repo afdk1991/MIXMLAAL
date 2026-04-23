@@ -1,90 +1,85 @@
 <template>
   <div class="dashboard-container">
-    <el-card class="dashboard-card">
-      <template #header>
-        <div class="card-header">
-          <span>系统概览</span>
+    <h1>仪表盘</h1>
+    <div class="stats-container">
+      <el-card shadow="hover" class="stat-card">
+        <div class="stat-item">
+          <el-icon class="stat-icon"><ElementPlusIconsVue.User /></el-icon>
+          <div class="stat-info">
+            <div class="stat-value">{{ userCount }}</div>
+            <div class="stat-label">用户总数</div>
+          </div>
         </div>
-      </template>
-      <div class="dashboard-stats">
-        <el-row :gutter="20">
-          <el-col :span="6">
-            <el-card class="stat-card">
-              <div class="stat-content">
-                <div class="stat-value">{{ userCount }}</div>
-                <div class="stat-label">用户总数</div>
-              </div>
-            </el-card>
-          </el-col>
-          <el-col :span="6">
-            <el-card class="stat-card">
-              <div class="stat-content">
-                <div class="stat-value">{{ orderCount }}</div>
-                <div class="stat-label">订单总数</div>
-              </div>
-            </el-card>
-          </el-col>
-          <el-col :span="6">
-            <el-card class="stat-card">
-              <div class="stat-content">
-                <div class="stat-value">{{ roleCount }}</div>
-                <div class="stat-label">角色数量</div>
-              </div>
-            </el-card>
-          </el-col>
-          <el-col :span="6">
-            <el-card class="stat-card">
-              <div class="stat-content">
-                <div class="stat-value">{{ permissionCount }}</div>
-                <div class="stat-label">权限数量</div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </div>
-      <div class="dashboard-charts">
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <el-card class="chart-card">
-              <template #header>
-                <span>用户增长趋势</span>
-              </template>
-              <div ref="userChart" class="chart-container"></div>
-            </el-card>
-          </el-col>
-          <el-col :span="12">
-            <el-card class="chart-card">
-              <template #header>
-                <span>订单分布</span>
-              </template>
-              <div ref="orderChart" class="chart-container"></div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </div>
-    </el-card>
+      </el-card>
+      <el-card shadow="hover" class="stat-card">
+        <div class="stat-item">
+          <el-icon class="stat-icon"><ElementPlusIconsVue.Shop /></el-icon>
+          <div class="stat-info">
+            <div class="stat-value">{{ merchantCount }}</div>
+            <div class="stat-label">商家总数</div>
+          </div>
+        </div>
+      </el-card>
+      <el-card shadow="hover" class="stat-card">
+        <div class="stat-item">
+          <el-icon class="stat-icon"><ElementPlusIconsVue.Goods /></el-icon>
+          <div class="stat-info">
+            <div class="stat-value">{{ productCount }}</div>
+            <div class="stat-label">商品总数</div>
+          </div>
+        </div>
+      </el-card>
+      <el-card shadow="hover" class="stat-card">
+        <div class="stat-item">
+          <el-icon class="stat-icon"><ElementPlusIconsVue.Document /></el-icon>
+          <div class="stat-info">
+            <div class="stat-value">{{ orderCount }}</div>
+            <div class="stat-label">订单总数</div>
+          </div>
+        </div>
+      </el-card>
+    </div>
+    <div class="charts-container">
+      <el-card shadow="hover" class="chart-card">
+        <template #header>
+          <div class="card-header">
+            <span>用户增长趋势</span>
+          </div>
+        </template>
+        <div id="userGrowthChart" class="chart"></div>
+      </el-card>
+      <el-card shadow="hover" class="chart-card">
+        <template #header>
+          <div class="card-header">
+            <span>订单统计</span>
+          </div>
+        </template>
+        <div id="orderChart" class="chart"></div>
+      </el-card>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import * as echarts from 'echarts'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-const userChart = ref(null)
-const orderChart = ref(null)
-const userCount = ref(1200)
-const orderCount = ref(5800)
-const roleCount = ref(10)
-const permissionCount = ref(50)
+// 统计数据
+const userCount = ref(1234)
+const merchantCount = ref(567)
+const productCount = ref(8910)
+const orderCount = ref(2345)
 
-onMounted(() => {
-  initUserChart()
-  initOrderChart()
-})
+// 图表实例
+let userGrowthChart = null
+let orderChart = null
 
-const initUserChart = () => {
-  const chart = echarts.init(userChart.value)
-  const option = {
+// 初始化图表
+const initCharts = () => {
+  // 用户增长趋势图表
+  userGrowthChart = echarts.init(document.getElementById('userGrowthChart'))
+  const userGrowthOption = {
     tooltip: {
       trigger: 'axis'
     },
@@ -95,18 +90,20 @@ const initUserChart = () => {
     yAxis: {
       type: 'value'
     },
-    series: [{
-      data: [120, 190, 300, 500, 800, 1200],
-      type: 'line',
-      smooth: true
-    }]
+    series: [
+      {
+        data: [120, 190, 300, 500, 800, 1200],
+        type: 'line',
+        smooth: true,
+        areaStyle: {}
+      }
+    ]
   }
-  chart.setOption(option)
-}
+  userGrowthChart.setOption(userGrowthOption)
 
-const initOrderChart = () => {
-  const chart = echarts.init(orderChart.value)
-  const option = {
+  // 订单统计图表
+  orderChart = echarts.init(document.getElementById('orderChart'))
+  const orderOption = {
     tooltip: {
       trigger: 'item'
     },
@@ -114,36 +111,112 @@ const initOrderChart = () => {
       orient: 'vertical',
       left: 'left'
     },
-    series: [{
-      name: '订单类型',
-      type: 'pie',
-      radius: '50%',
-      data: [
-        { value: 2000, name: '网约车' },
-        { value: 1800, name: '出租车' },
-        { value: 1200, name: '配送' },
-        { value: 800, name: '其他' }
-      ],
-      emphasis: {
-        itemStyle: {
-          shadowBlur: 10,
-          shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+    series: [
+      {
+        name: '订单状态',
+        type: 'pie',
+        radius: '50%',
+        data: [
+          { value: 1200, name: '待支付' },
+          { value: 800, name: '已支付' },
+          { value: 300, name: '已发货' },
+          { value: 45, name: '已完成' }
+        ],
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
         }
       }
-    }]
+    ]
   }
-  chart.setOption(option)
+  orderChart.setOption(orderOption)
 }
+
+// 处理窗口大小变化
+const handleResize = () => {
+  userGrowthChart?.resize()
+  orderChart?.resize()
+}
+
+// 组件挂载时
+onMounted(() => {
+  initCharts()
+  window.addEventListener('resize', handleResize)
+})
+
+// 组件卸载时
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+  userGrowthChart?.dispose()
+  orderChart?.dispose()
+})
 </script>
 
 <style scoped>
 .dashboard-container {
-  width: 100%;
+  padding: 20px;
 }
 
-.dashboard-card {
+.dashboard-container h1 {
   margin-bottom: 20px;
+  color: #303133;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.stat-icon {
+  font-size: 32px;
+  color: #409eff;
+  margin-right: 20px;
+}
+
+.stat-info {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #303133;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #909399;
+  margin-top: 5px;
+}
+
+.charts-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.chart-card {
+  height: 400px;
 }
 
 .card-header {
@@ -152,47 +225,24 @@ const initOrderChart = () => {
   align-items: center;
 }
 
-.dashboard-stats {
-  margin-bottom: 20px;
-}
-
-.stat-card {
-  height: 100px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.stat-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.stat-value {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1890ff;
-  margin-bottom: 8px;
-}
-
-.stat-label {
-  font-size: 14px;
-  color: #606266;
-}
-
-.dashboard-charts {
-  margin-top: 20px;
-}
-
-.chart-card {
-  height: 300px;
-  margin-bottom: 20px;
-}
-
-.chart-container {
+.chart {
   width: 100%;
-  height: 250px;
+  height: 350px;
+}
+
+@media (max-width: 1200px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

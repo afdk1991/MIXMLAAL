@@ -1,25 +1,15 @@
-/**
- * 认证中间件
- * 版本: v1.0.0.0
- * 说明: 用于验证用户JWT令牌，确保API访问安全
- */
+const { verifyToken } = require('../config/jwt');
+const { cache } = require('../config/redis');
 
-const jwt = require('jsonwebtoken');
-
-/**
- * 认证中间件
- * @param {Object} req - 请求对象
- * @param {Object} res - 响应对象
- * @param {Function} next - 下一个中间件
- */
-const authMiddleware = (req, res, next) => {
+// 认证中间件
+const authMiddleware = async (req, res, next) => {
   try {
-    // 从请求头获取token
+    // 从请求头获取令牌
     const authHeader = req.headers.authorization;
     
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return res.status(401).json({
-        code: 401,
+        code: 10002,
         message: '缺少认证令牌',
         data: null
       });
@@ -27,81 +17,79 @@ const authMiddleware = (req, res, next) => {
     
     const token = authHeader.split(' ')[1];
     
-    // 验证token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+    // 验证令牌
+    const decoded = verifyToken(token);
     
-    // 将用户信息添加到请求对象
-    req.user = decoded;
-    
-    next();
-  } catch (error) {
-    if (error.name === 'TokenExpiredError') {
+    if (!decoded) {
       return res.status(401).json({
-        code: 401,
-        message: '认证令牌已过期',
+        code: 10003,
+        message: '令牌无效或已过期',
         data: null
       });
     }
     
+    // 从缓存中验证令牌是否存在
+    const cacheKey = `token:${decoded.id}`;
+    const cachedToken = await cache.get(cacheKey);
+    
+    if (!cachedToken) {
+      return res.status(401).json({
+        code: 10003,
+        message: '令牌已被注销',
+        data: null
+      });
+    }
+    
+    // 将用户信息存储在请求对象中
+    req.user = decoded;
+    
+    next();
+  } catch (error) {
+    console.error('认证中间件错误:', error);
     return res.status(401).json({
-      code: 401,
+      code: 10003,
       message: '认证失败',
       data: null
     });
   }
 };
 
-/**
- * 可选认证中间件
- * @param {Object} req - 请求对象
- * @param {Object} res - 响应对象
- * @param {Function} next - 下一个中间件
- */
-const optionalAuthMiddleware = (req, res, next) => {
-  try {
-    const authHeader = req.headers.authorization;
-    
-    if (authHeader && authHeader.startsWith('Bearer ')) {
-      const token = authHeader.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
-      req.user = decoded;
-    }
-    
-    next();
-  } catch (error) {
-    // 可选认证，token验证失败不阻止请求
-    next();
-  }
-};
-
-/**
- * 管理员权限中间件
- * @param {Object} req - 请求对象
- * @param {Object} res - 响应对象
- * @param {Function} next - 下一个中间件
- */
-const adminMiddleware = (req, res, next) => {
-  try {
-    if (!req.user || !req.user.isAdmin) {
+// 权限中间件
+const permissionMiddleware = (requiredPermission) => {
+  return (req, res, next) => {
+    try {
+      const user = req.user;
+      
+      if (!user) {
+        return res.status(401).json({
+          code: 10002,
+          message: '缺少认证信息',
+          data: null
+        });
+      }
+      
+      // 检查用户是否拥有所需权限
+      if (!user.permissions || !user.permissions.includes(requiredPermission)) {
+        return res.status(403).json({
+          code: 10004,
+          message: '权限不足',
+          data: null
+        });
+      }
+      
+      next();
+    } catch (error) {
+      console.error('权限中间件错误:', error);
       return res.status(403).json({
-        code: 403,
-        message: '权限不足，需要管理员权限',
+        code: 10004,
+        message: '权限验证失败',
         data: null
       });
     }
-    
-    next();
-  } catch (error) {
-    return res.status(403).json({
-      code: 403,
-      message: '权限验证失败',
-      data: null
-    });
-  }
+  };
 };
 
 module.exports = {
   authMiddleware,
-  optionalAuthMiddleware,
-  adminMiddleware
+  permissionMiddleware
 };

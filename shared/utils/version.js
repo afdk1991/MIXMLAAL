@@ -81,7 +81,34 @@ function getVersionComponents() {
   };
 }
 
-module.exports = {
+// 同时支持CommonJS和ES模块系统
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    getVersionInfo,
+    getFullVersion,
+    getVersion,
+    getVersionComponents
+  };
+}
+
+if (typeof exports !== 'undefined') {
+  exports.getVersionInfo = getVersionInfo;
+  exports.getFullVersion = getFullVersion;
+  exports.getVersion = getVersion;
+  exports.getVersionComponents = getVersionComponents;
+}
+
+if (typeof window !== 'undefined') {
+  window.VersionUtils = {
+    getVersionInfo,
+    getFullVersion,
+    getVersion,
+    getVersionComponents
+  };
+}
+
+// ES模块导出
+export {
   getVersionInfo,
   getFullVersion,
   getVersion,

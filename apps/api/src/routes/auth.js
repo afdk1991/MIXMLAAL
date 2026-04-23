@@ -1,20 +1,22 @@
 const express = require('express');
-const router = express.Router();
-const authController = require('../controllers/auth');
+const { register, login, refreshToken, logout, getCurrentUser } = require('../controllers/auth');
+const { authMiddleware } = require('../middleware/auth');
 
-// 登录
-router.post('/login', authController.login);
+const router = express.Router();
 
 // 注册
-router.post('/register', authController.register);
+router.post('/register', register);
 
-// 登出
-router.post('/logout', authController.logout);
+// 登录
+router.post('/login', login);
 
-// 刷新token
-router.post('/refresh', authController.refreshToken);
+// 刷新令牌
+router.post('/refresh', refreshToken);
+
+// 退出登录
+router.post('/logout', authMiddleware, logout);
 
 // 获取当前用户信息
-router.get('/me', authController.getMe);
+router.get('/me', authMiddleware, getCurrentUser);
 
 module.exports = router;

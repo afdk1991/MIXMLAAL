@@ -1,75 +1,69 @@
 <template>
   <div class="roles-container">
-    <el-card class="roles-card">
+    <h1>角色管理</h1>
+    <el-card shadow="hover">
       <template #header>
         <div class="card-header">
-          <span>角色管理</span>
-          <el-button type="primary" @click="handleAddRole">
-            <el-icon><Plus /></el-icon>
-            新增角色
-          </el-button>
+          <span>角色列表</span>
+          <el-button type="primary" @click="handleAddRole">添加角色</el-button>
         </div>
       </template>
-      <div class="roles-table">
-        <el-table :data="roles" style="width: 100%" v-loading="loading">
-          <el-table-column prop="id" label="ID" width="80"></el-table-column>
-          <el-table-column prop="name" label="角色名称"></el-table-column>
-          <el-table-column prop="description" label="角色描述"></el-table-column>
-          <el-table-column prop="createdAt" label="创建时间" width="180"></el-table-column>
-          <el-table-column label="操作" width="150">
-            <template #default="scope">
-              <el-button type="primary" link @click="handleEditRole(scope.row)">
-                <el-icon><Edit /></el-icon>
-                编辑
-              </el-button>
-              <el-button type="danger" link @click="handleDeleteRole(scope.row.id)">
-                <el-icon><Delete /></el-icon>
-                删除
-              </el-button>
-            </template>
-          </el-table-column>
-        </el-table>
+      <div class="search-container">
+        <el-input v-model="searchQuery" placeholder="搜索角色名称" style="width: 300px; margin-right: 10px;">
+          <template #append>
+            <el-button @click="handleSearch"><el-icon><ElementPlusIconsVue.Search /></el-icon></el-button>
+          </template>
+        </el-input>
+        <el-button @click="handleReset">重置</el-button>
       </div>
-      <div class="roles-pagination">
+      <el-table :data="rolesData" style="width: 100%;" border>
+        <el-table-column prop="id" label="ID" width="80" />
+        <el-table-column prop="name" label="角色名称" />
+        <el-table-column prop="description" label="角色描述" />
+        <el-table-column prop="created_at" label="创建时间" width="180" />
+        <el-table-column label="操作" width="200" fixed="right">
+          <template #default="{ row }">
+            <el-button size="small" @click="handleEditRole(row)">编辑</el-button>
+            <el-button size="small" type="danger" @click="handleDeleteRole(row.id)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div class="pagination-container">
         <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
+          v-model:current-page="currentPage"
+          v-model:page-size="pageSize"
           :page-sizes="[10, 20, 50, 100]"
-          :page-size="pageSize"
           layout="total, sizes, prev, pager, next, jumper"
           :total="total"
-        ></el-pagination>
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+        />
       </div>
     </el-card>
 
-    <!-- 新增/编辑角色对话框 -->
+    <!-- 添加/编辑角色对话框 -->
     <el-dialog
-      :title="dialogTitle"
       v-model="dialogVisible"
+      :title="isEdit ? '编辑角色' : '添加角色'"
       width="500px"
     >
-      <el-form :model="roleForm" :rules="rules" ref="roleFormRef">
+      <el-form :model="roleForm" :rules="roleRules" ref="roleFormRef" label-width="100px">
         <el-form-item label="角色名称" prop="name">
-          <el-input v-model="roleForm.name" placeholder="请输入角色名称"></el-input>
+          <el-input v-model="roleForm.name" placeholder="请输入角色名称" />
         </el-form-item>
         <el-form-item label="角色描述" prop="description">
-          <el-input v-model="roleForm.description" type="textarea" placeholder="请输入角色描述"></el-input>
+          <el-input v-model="roleForm.description" type="textarea" placeholder="请输入角色描述" />
         </el-form-item>
-        <el-form-item label="权限">
-          <el-tree
-            v-model="roleForm.permissions"
-            :data="permissionTree"
-            show-checkbox
-            node-key="id"
-            default-expand-all
-          ></el-tree>
+        <el-form-item label="权限" prop="permissions">
+          <el-select v-model="roleForm.permissions" multiple placeholder="请选择权限">
+            <el-option v-for="permission in permissions" :key="permission.id" :label="permission.name" :value="permission.id" />
+          </el-select>
         </el-form-item>
       </el-form>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogVisible = false">取消</el-button>
-          <el-button type="primary" @click="handleSubmit" :loading="submitLoading">确定</el-button>
+          <el-button type="primary" @click="handleSaveRole">保存</el-button>
         </span>
       </template>
     </el-dialog>
@@ -78,20 +72,21 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
-import { Plus, Edit, Delete } from '@element-plus/icons-vue'
-import { ElMessageBox, ElMessage } from 'element-plus'
-import * as roleApi from '../api/role'
-import * as permissionApi from '../api/permission'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import api from '../api'
 
-const roles = ref([])
-const loading = ref(false)
-const submitLoading = ref(false)
+// 表格数据
+const rolesData = ref([])
+const total = ref(0)
 const currentPage = ref(1)
 const pageSize = ref(10)
-const total = ref(0)
 
+// 搜索
+const searchQuery = ref('')
+
+// 对话框
 const dialogVisible = ref(false)
-const dialogTitle = ref('新增角色')
 const isEdit = ref(false)
 const roleForm = reactive({
   id: '',
@@ -100,112 +95,78 @@ const roleForm = reactive({
   permissions: []
 })
 
-const rules = {
+// 表单规则
+const roleRules = {
   name: [
     { required: true, message: '请输入角色名称', trigger: 'blur' },
-    { min: 2, max: 20, message: '长度在 2 到 20 个字符', trigger: 'blur' }
+    { min: 2, message: '角色名称长度至少为2位', trigger: 'blur' }
   ],
   description: [
     { required: true, message: '请输入角色描述', trigger: 'blur' }
+  ],
+  permissions: [
+    { required: true, message: '请选择权限', trigger: 'blur' }
   ]
 }
 
-const roleFormRef = ref(null)
-const permissionTree = ref([])
+// 权限列表
+const permissions = ref([])
 
-onMounted(() => {
-  fetchRoles()
-  fetchPermissionTree()
-})
-
-const fetchRoles = async () => {
-  loading.value = true
+// 获取角色列表
+const getRoleList = async () => {
   try {
-    const response = await roleApi.getRoles({
-      page: currentPage.value,
-      pageSize: pageSize.value
+    const response = await api.get('/roles', {
+      params: {
+        page: currentPage.value,
+        page_size: pageSize.value,
+        search: searchQuery.value
+      }
     })
-    roles.value = response.data || [
-      { id: 1, name: '管理员', description: '系统管理员', createdAt: '2026-01-01 00:00:00' },
-      { id: 2, name: '普通用户', description: '普通用户', createdAt: '2026-01-02 00:00:00' },
-      { id: 3, name: '运营人员', description: '运营人员', createdAt: '2026-01-03 00:00:00' }
-    ]
-    total.value = response.total || roles.value.length
+    rolesData.value = response.data.data.list
+    total.value = response.data.data.total
   } catch (error) {
     ElMessage.error('获取角色列表失败')
     console.error('获取角色列表失败:', error)
-  } finally {
-    loading.value = false
   }
 }
 
-const fetchPermissionTree = async () => {
+// 获取权限列表
+const getPermissions = async () => {
   try {
-    const response = await permissionApi.getPermissionTree()
-    permissionTree.value = response.data || [
-      {
-        id: 'dashboard',
-        label: '仪表盘',
-        children: [
-          { id: 'dashboard:view', label: '查看' }
-        ]
-      },
-      {
-        id: 'users',
-        label: '用户管理',
-        children: [
-          { id: 'users:view', label: '查看' },
-          { id: 'users:add', label: '新增' },
-          { id: 'users:edit', label: '编辑' },
-          { id: 'users:delete', label: '删除' }
-        ]
-      },
-      {
-        id: 'roles',
-        label: '角色管理',
-        children: [
-          { id: 'roles:view', label: '查看' },
-          { id: 'roles:add', label: '新增' },
-          { id: 'roles:edit', label: '编辑' },
-          { id: 'roles:delete', label: '删除' }
-        ]
-      },
-      {
-        id: 'permissions',
-        label: '权限管理',
-        children: [
-          { id: 'permissions:view', label: '查看' },
-          { id: 'permissions:add', label: '新增' },
-          { id: 'permissions:edit', label: '编辑' },
-          { id: 'permissions:delete', label: '删除' }
-        ]
-      },
-      {
-        id: 'statistics',
-        label: '数据统计',
-        children: [
-          { id: 'statistics:view', label: '查看' }
-        ]
-      }
-    ]
+    const response = await api.get('/permissions')
+    permissions.value = response.data.data
   } catch (error) {
-    ElMessage.error('获取权限树失败')
-    console.error('获取权限树失败:', error)
+    ElMessage.error('获取权限列表失败')
+    console.error('获取权限列表失败:', error)
   }
 }
 
+// 处理搜索
+const handleSearch = () => {
+  currentPage.value = 1
+  getRoleList()
+}
+
+// 处理重置
+const handleReset = () => {
+  searchQuery.value = ''
+  currentPage.value = 1
+  getRoleList()
+}
+
+// 处理分页
 const handleSizeChange = (size) => {
   pageSize.value = size
-  fetchRoles()
+  getRoleList()
 }
 
 const handleCurrentChange = (current) => {
   currentPage.value = current
-  fetchRoles()
+  getRoleList()
 }
 
+// 处理添加角色
 const handleAddRole = () => {
-  dialogTitle.value = '新增角色'
   isEdit.value = false
   roleForm.id = ''
   roleForm.name = ''
@@ -214,84 +175,70 @@ const handleAddRole = () => {
   dialogVisible.value = true
 }
 
-const handleEditRole = async (role) => {
-  dialogTitle.value = '编辑角色'
+// 处理编辑角色
+const handleEditRole = (row) => {
   isEdit.value = true
-  roleForm.id = role.id
-  roleForm.name = role.name
-  roleForm.description = role.description
-  
-  // 获取角色的权限
-  try {
-    const response = await roleApi.getRolePermissions(role.id)
-    roleForm.permissions = response.data || []
-  } catch (error) {
-    ElMessage.error('获取角色权限失败')
-    console.error('获取角色权限失败:', error)
-  }
-  
+  roleForm.id = row.id
+  roleForm.name = row.name
+  roleForm.description = row.description
+  roleForm.permissions = row.permissions.map(permission => permission.id)
   dialogVisible.value = true
 }
 
-const handleDeleteRole = (id) => {
-  ElMessageBox.confirm('确定要删除该角色吗？', '警告', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
-    type: 'warning'
-  }).then(async () => {
-    try {
-      await roleApi.deleteRole(id)
-      ElMessage.success('角色删除成功')
-      fetchRoles()
-    } catch (error) {
+// 处理保存角色
+const handleSaveRole = async () => {
+  try {
+    if (isEdit.value) {
+      // 编辑角色
+      await api.put(`/roles/${roleForm.id}`, roleForm)
+      ElMessage.success('编辑角色成功')
+    } else {
+      // 添加角色
+      await api.post('/roles', roleForm)
+      ElMessage.success('添加角色成功')
+    }
+    dialogVisible.value = false
+    getRoleList()
+  } catch (error) {
+    ElMessage.error('保存角色失败')
+    console.error('保存角色失败:', error)
+  }
+}
+
+// 处理删除角色
+const handleDeleteRole = async (id) => {
+  try {
+    await ElMessageBox.confirm('确定要删除这个角色吗？', '提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    })
+    await api.delete(`/roles/${id}`)
+    ElMessage.success('删除角色成功')
+    getRoleList()
+  } catch (error) {
+    if (error !== 'cancel') {
       ElMessage.error('删除角色失败')
       console.error('删除角色失败:', error)
     }
-  }).catch(() => {
-    // 取消删除
-  })
+  }
 }
 
-const handleSubmit = async () => {
-  roleFormRef.value.validate(async (valid) => {
-    if (valid) {
-      submitLoading.value = true
-      try {
-        if (isEdit.value) {
-          // 编辑角色
-          await roleApi.updateRole(roleForm.id, roleForm)
-          // 分配权限
-          await roleApi.assignPermissions(roleForm.id, roleForm.permissions)
-          ElMessage.success('角色编辑成功')
-        } else {
-          // 新增角色
-          const response = await roleApi.createRole(roleForm)
-          // 分配权限
-          await roleApi.assignPermissions(response.id, roleForm.permissions)
-          ElMessage.success('角色新增成功')
-        }
-        dialogVisible.value = false
-        fetchRoles()
-      } catch (error) {
-        ElMessage.error(isEdit.value ? '编辑角色失败' : '新增角色失败')
-        console.error(isEdit.value ? '编辑角色失败:' : '新增角色失败:', error)
-      } finally {
-        submitLoading.value = false
-      }
-    } else {
-      return false
-    }
-  })
-}
+// 组件挂载时
+onMounted(() => {
+  getRoleList()
+  getPermissions()
+})
 </script>
 
 <style scoped>
 .roles-container {
-  width: 100%;
+  padding: 20px;
 }
 
-.roles-card {
+.roles-container h1 {
   margin-bottom: 20px;
+  color: #303133;
 }
 
 .card-header {
@@ -300,13 +247,20 @@ const handleSubmit = async () => {
   align-items: center;
 }
 
-.roles-table {
+.search-container {
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
 }
 
-.roles-pagination {
+.pagination-container {
+  margin-top: 20px;
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

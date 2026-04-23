@@ -1,13 +1,18 @@
 import { Hyperlit } from '@umijs/max';
-import { getVersionInfo } from '../../shared/utils/version.js';
-import { autoCheckVersion } from '../../shared/services/version-checker.js';
 
-// 加载版本信息
-const versionInfo = getVersionInfo();
+const versionInfo = {
+  version: '1.0.0',
+  fullVersion: 'MIXMLAAL-1.0.0-20260423',
+  major: 1,
+  minor: 0,
+  revision: 0,
+  build: 0,
+  timestamp: '20260423',
+  project: 'MIXMLAAL',
+  versionType: 'admin'
+};
+
 console.log('MIXMLAAL React Admin Version:', versionInfo.fullVersion);
-
-// 自动检查版本更新
-autoCheckVersion(versionInfo.version);
 
 export const request: Hyperlit.RequestConfig = {
   timeout: 10000,
@@ -16,5 +21,4 @@ export const request: Hyperlit.RequestConfig = {
   },
 };
 
-// 导出版本信息供其他组件使用
 export const version = versionInfo;
