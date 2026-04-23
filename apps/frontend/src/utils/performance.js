@@ -123,3 +123,41 @@ export function optimizeFirstPaint() {
     });
   });
 }
+
+// 批量处理DOM操作，减少重排和重绘
+export function batchDOMOperations(callback) {
+  if (typeof callback === 'function') {
+    // 使用requestAnimationFrame来批量处理DOM操作
+    requestAnimationFrame(() => {
+      callback();
+    });
+  }
+}
+
+// 预加载图片
+export function preloadImages(imageUrls) {
+  if (Array.isArray(imageUrls)) {
+    imageUrls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  }
+}
+
+// 优化滚动性能
+export function optimizeScroll() {
+  // 启用被动事件监听器
+  if ('passive' in EventTarget.prototype) {
+    const supportsPassive = true;
+    window.addEventListener('scroll', () => {
+      // 滚动处理逻辑
+    }, { passive: supportsPassive });
+  }
+  
+  // 避免滚动时的重排
+  const elements = document.querySelectorAll('.scroll-optimized');
+  elements.forEach(el => {
+    el.style.transform = 'translateZ(0)';
+    el.style.willChange = 'transform';
+  });
+}

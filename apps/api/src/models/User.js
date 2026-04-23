@@ -1,108 +1,76 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/db');
+const { sequelize } = require('../config/database');
 
 const User = sequelize.define('User', {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.BIGINT,
     primaryKey: true,
     autoIncrement: true
   },
-  username: {
-    type: DataTypes.STRING(50),
-    allowNull: true,
-    unique: true
+  phone: {
+    type: DataTypes.STRING(11),
+    unique: true,
+    allowNull: false
   },
   password: {
-    type: DataTypes.STRING(100),
-    allowNull: true
+    type: DataTypes.STRING(255),
+    allowNull: false
   },
-  name: {
+  nickname: {
     type: DataTypes.STRING(50),
-    allowNull: true
+    allowNull: false
   },
-  phone: {
-    type: DataTypes.STRING(20),
-    allowNull: true
+  avatar: {
+    type: DataTypes.STRING(255)
+  },
+  gender: {
+    type: DataTypes.TINYINT,
+    defaultValue: 0 // 0:未知, 1:男, 2:女
+  },
+  birthday: {
+    type: DataTypes.DATE
   },
   email: {
     type: DataTypes.STRING(100),
-    allowNull: true
-  },
-  role: {
-    type: DataTypes.ENUM('admin', 'user', 'delivery'),
-    allowNull: false,
-    defaultValue: 'user'
-  },
-  status: {
-    type: DataTypes.ENUM('active', 'inactive'),
-    allowNull: false,
-    defaultValue: 'active'
-  },
-  avatar: {
-    type: DataTypes.STRING(500),
-    allowNull: true
-  },
-  wechatOpenid: {
-    type: DataTypes.STRING(100),
-    allowNull: true,
     unique: true
   },
-  wechatUnionid: {
-    type: DataTypes.STRING(100),
-    allowNull: true
+  real_name: {
+    type: DataTypes.STRING(50)
   },
-  qqOpenid: {
-    type: DataTypes.STRING(100),
-    allowNull: true,
+  id_card: {
+    type: DataTypes.STRING(18),
     unique: true
   },
-  googleOpenid: {
-    type: DataTypes.STRING(100),
-    allowNull: true,
-    unique: true
-  },
-  thirdPartyProvider: {
-    type: DataTypes.ENUM('wechat', 'qq', 'google', 'none'),
-    allowNull: false,
-    defaultValue: 'none'
-  },
-  thirdPartyId: {
-    type: DataTypes.STRING(100),
-    allowNull: true
-  },
-  membershipLevel: {
-    type: DataTypes.ENUM('normal', 'bronze', 'silver', 'gold', 'platinum'),
-    allowNull: false,
-    defaultValue: 'normal'
-  },
-  membershipExpiry: {
-    type: DataTypes.DATE,
-    allowNull: true
-  },
-  points: {
+  user_level: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    defaultValue: 1
+  },
+  user_points: {
+    type: DataTypes.INTEGER,
     defaultValue: 0
   },
-  growthPoints: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    defaultValue: 0,
-    comment: '成长值，用于会员等级提升'
+  balance: {
+    type: DataTypes.DECIMAL(10, 2),
+    defaultValue: 0.00
   },
-  createdAt: {
+  status: {
+    type: DataTypes.TINYINT,
+    defaultValue: 1 // 1:正常, 0:禁用
+  },
+  created_at: {
     type: DataTypes.DATE,
-    allowNull: false,
     defaultValue: DataTypes.NOW
   },
-  updatedAt: {
+  updated_at: {
     type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW
+    defaultValue: DataTypes.NOW,
+    onUpdate: DataTypes.NOW
   }
 }, {
   tableName: 'users',
-  timestamps: true
+  timestamps: true,
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
 });
 
 module.exports = User;

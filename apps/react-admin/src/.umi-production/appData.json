@@ -1,0 +1,2299 @@
+{
+  "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+  "pkg": {
+    "name": "react-admin",
+    "version": "0.0.0.4",
+    "private": true,
+    "description": "MIXMLAAL React + Ant Design Pro Enterprise Admin System",
+    "scripts": {
+      "start": "umi dev",
+      "build": "umi build",
+      "postinstall": "umi generate tmp",
+      "precommit": "lint-staged"
+    },
+    "dependencies": {
+      "@ant-design/icons": "^5.2.6",
+      "@ant-design/pro-components": "^2.6.43",
+      "@umijs/max": "^4.0.87",
+      "antd": "^5.13.2",
+      "lodash": "^4.17.21",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "umi": "^4.0.87"
+    },
+    "devDependencies": {
+      "@types/lodash": "^4.14.202",
+      "@types/react": "^18.2.48",
+      "@types/react-dom": "^18.2.18",
+      "eslint": "^8.56.0",
+      "husky": "^8.0.3",
+      "lint-staged": "^15.2.0",
+      "prettier": "^3.2.4",
+      "typescript": "^5.3.3"
+    }
+  },
+  "pkgPath": "F:\\MIXMLAAL\\apps\\react-admin\\package.json",
+  "plugins": {
+    "./node_modules/@umijs/core/dist/service/servicePlugin": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "preset",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/core/dist/service/servicePlugin.js",
+      "id": "./node_modules/@umijs/core/dist/service/servicePlugin",
+      "key": "servicePlugin",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "@umijs/preset-umi": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "preset",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/index.js",
+      "id": "@umijs/preset-umi",
+      "key": "umi",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 9
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/registerMethods": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/registerMethods.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/registerMethods",
+      "key": "registerMethods",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onStart": [
+            0
+          ]
+        },
+        "register": 3
+      },
+      "enableBy": "register"
+    },
+    "@umijs/did-you-know": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/did-you-know/dist/plugin.js",
+      "id": "@umijs/did-you-know",
+      "key": "umijsDidYouKnow",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onStart": [
+            2
+          ]
+        },
+        "register": 2
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/404/404": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/404/404.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/404/404",
+      "key": "404",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyRoutes": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/aiDev/aiDev": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/aiDev/aiDev.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/aiDev/aiDev",
+      "key": "aiDev",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/appData/appData": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/appData/appData.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/appData/appData",
+      "key": "appData",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyAppData": [
+            13
+          ]
+        },
+        "register": 19
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/appData/umiInfo": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/appData/umiInfo.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/appData/umiInfo",
+      "key": "umiInfo",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/check/check": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/check/check.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/check/check",
+      "key": "check",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onCheckConfig": [
+            0
+          ],
+          "onCheck": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/check/babel722": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/check/babel722.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/check/babel722",
+      "key": "babel722",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onCheck": [
+            0
+          ]
+        },
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/codeSplitting/codeSplitting": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/codeSplitting/codeSplitting.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/codeSplitting/codeSplitting",
+      "key": "codeSplitting",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/configPlugins/configPlugins": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/configPlugins/configPlugins.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/configPlugins/configPlugins",
+      "key": "configPlugins",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0
+          ]
+        },
+        "register": 7
+      },
+      "enableBy": "register"
+    },
+    "virtual: config-title": {
+      "id": "virtual: config-title",
+      "key": "title",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-styles": {
+      "id": "virtual: config-styles",
+      "key": "styles",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-scripts": {
+      "id": "virtual: config-scripts",
+      "key": "scripts",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-routes": {
+      "id": "virtual: config-routes",
+      "key": "routes",
+      "config": {
+        "onChange": "regenerateTmpFiles"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-routeLoader": {
+      "id": "virtual: config-routeLoader",
+      "key": "routeLoader",
+      "config": {
+        "default": {
+          "moduleType": "esm"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-reactRouter5Compat": {
+      "id": "virtual: config-reactRouter5Compat",
+      "key": "reactRouter5Compat",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-presets": {
+      "id": "virtual: config-presets",
+      "key": "presets",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-plugins": {
+      "id": "virtual: config-plugins",
+      "key": "plugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-npmClient": {
+      "id": "virtual: config-npmClient",
+      "key": "npmClient",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-mountElementId": {
+      "id": "virtual: config-mountElementId",
+      "key": "mountElementId",
+      "config": {
+        "default": "root"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-metas": {
+      "id": "virtual: config-metas",
+      "key": "metas",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-links": {
+      "id": "virtual: config-links",
+      "key": "links",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-historyWithQuery": {
+      "id": "virtual: config-historyWithQuery",
+      "key": "historyWithQuery",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-history": {
+      "id": "virtual: config-history",
+      "key": "history",
+      "config": {
+        "default": {
+          "type": "browser"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-headScripts": {
+      "id": "virtual: config-headScripts",
+      "key": "headScripts",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-esbuildMinifyIIFE": {
+      "id": "virtual: config-esbuildMinifyIIFE",
+      "key": "esbuildMinifyIIFE",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-conventionRoutes": {
+      "id": "virtual: config-conventionRoutes",
+      "key": "conventionRoutes",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-conventionLayout": {
+      "id": "virtual: config-conventionLayout",
+      "key": "conventionLayout",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-base": {
+      "id": "virtual: config-base",
+      "key": "base",
+      "config": {
+        "default": "/"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-analyze": {
+      "id": "virtual: config-analyze",
+      "key": "analyze",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-writeToDisk": {
+      "id": "virtual: config-writeToDisk",
+      "key": "writeToDisk",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-transformRuntime": {
+      "id": "virtual: config-transformRuntime",
+      "key": "transformRuntime",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-theme": {
+      "id": "virtual: config-theme",
+      "key": "theme",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-targets": {
+      "id": "virtual: config-targets",
+      "key": "targets",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-svgr": {
+      "id": "virtual: config-svgr",
+      "key": "svgr",
+      "config": {
+        "default": {}
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-svgo": {
+      "id": "virtual: config-svgo",
+      "key": "svgo",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-stylusLoader": {
+      "id": "virtual: config-stylusLoader",
+      "key": "stylusLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-styleLoader": {
+      "id": "virtual: config-styleLoader",
+      "key": "styleLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-srcTranspilerOptions": {
+      "id": "virtual: config-srcTranspilerOptions",
+      "key": "srcTranspilerOptions",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-srcTranspiler": {
+      "id": "virtual: config-srcTranspiler",
+      "key": "srcTranspiler",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-sassLoader": {
+      "id": "virtual: config-sassLoader",
+      "key": "sassLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-runtimePublicPath": {
+      "id": "virtual: config-runtimePublicPath",
+      "key": "runtimePublicPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-purgeCSS": {
+      "id": "virtual: config-purgeCSS",
+      "key": "purgeCSS",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-publicPath": {
+      "id": "virtual: config-publicPath",
+      "key": "publicPath",
+      "config": {
+        "default": "/"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-proxy": {
+      "id": "virtual: config-proxy",
+      "key": "proxy",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-postcssLoader": {
+      "id": "virtual: config-postcssLoader",
+      "key": "postcssLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-outputPath": {
+      "id": "virtual: config-outputPath",
+      "key": "outputPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-normalCSSLoaderModules": {
+      "id": "virtual: config-normalCSSLoaderModules",
+      "key": "normalCSSLoaderModules",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-mfsu": {
+      "id": "virtual: config-mfsu",
+      "key": "mfsu",
+      "config": {
+        "default": {
+          "strategy": "eager"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-mdx": {
+      "id": "virtual: config-mdx",
+      "key": "mdx",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-manifest": {
+      "id": "virtual: config-manifest",
+      "key": "manifest",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-lessLoader": {
+      "id": "virtual: config-lessLoader",
+      "key": "lessLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-jsMinifierOptions": {
+      "id": "virtual: config-jsMinifierOptions",
+      "key": "jsMinifierOptions",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-jsMinifier": {
+      "id": "virtual: config-jsMinifier",
+      "key": "jsMinifier",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-inlineLimit": {
+      "id": "virtual: config-inlineLimit",
+      "key": "inlineLimit",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-ignoreMomentLocale": {
+      "id": "virtual: config-ignoreMomentLocale",
+      "key": "ignoreMomentLocale",
+      "config": {
+        "default": true
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-https": {
+      "id": "virtual: config-https",
+      "key": "https",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-hash": {
+      "id": "virtual: config-hash",
+      "key": "hash",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-forkTSChecker": {
+      "id": "virtual: config-forkTSChecker",
+      "key": "forkTSChecker",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-fastRefresh": {
+      "id": "virtual: config-fastRefresh",
+      "key": "fastRefresh",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraPostCSSPlugins": {
+      "id": "virtual: config-extraPostCSSPlugins",
+      "key": "extraPostCSSPlugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraBabelPresets": {
+      "id": "virtual: config-extraBabelPresets",
+      "key": "extraBabelPresets",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraBabelPlugins": {
+      "id": "virtual: config-extraBabelPlugins",
+      "key": "extraBabelPlugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraBabelIncludes": {
+      "id": "virtual: config-extraBabelIncludes",
+      "key": "extraBabelIncludes",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-externals": {
+      "id": "virtual: config-externals",
+      "key": "externals",
+      "config": {
+        "default": {}
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-esm": {
+      "id": "virtual: config-esm",
+      "key": "esm",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-devtool": {
+      "id": "virtual: config-devtool",
+      "key": "devtool",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-depTranspiler": {
+      "id": "virtual: config-depTranspiler",
+      "key": "depTranspiler",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-define": {
+      "id": "virtual: config-define",
+      "key": "define",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-deadCode": {
+      "id": "virtual: config-deadCode",
+      "key": "deadCode",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssPublicPath": {
+      "id": "virtual: config-cssPublicPath",
+      "key": "cssPublicPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssMinifierOptions": {
+      "id": "virtual: config-cssMinifierOptions",
+      "key": "cssMinifierOptions",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssMinifier": {
+      "id": "virtual: config-cssMinifier",
+      "key": "cssMinifier",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssLoaderModules": {
+      "id": "virtual: config-cssLoaderModules",
+      "key": "cssLoaderModules",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssLoader": {
+      "id": "virtual: config-cssLoader",
+      "key": "cssLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-copy": {
+      "id": "virtual: config-copy",
+      "key": "copy",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-checkDepCssModules": {
+      "id": "virtual: config-checkDepCssModules",
+      "key": "checkDepCssModules",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-chainWebpack": {
+      "id": "virtual: config-chainWebpack",
+      "key": "chainWebpack",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cacheDirectoryPath": {
+      "id": "virtual: config-cacheDirectoryPath",
+      "key": "cacheDirectoryPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-babelLoaderCustomize": {
+      "id": "virtual: config-babelLoaderCustomize",
+      "key": "babelLoaderCustomize",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-autoprefixer": {
+      "id": "virtual: config-autoprefixer",
+      "key": "autoprefixer",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-autoCSSModules": {
+      "id": "virtual: config-autoCSSModules",
+      "key": "autoCSSModules",
+      "config": {
+        "default": true
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-alias": {
+      "id": "virtual: config-alias",
+      "key": "alias",
+      "config": {
+        "default": {
+          "umi": "@@/exports",
+          "react": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\react",
+          "react-dom": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\react-dom",
+          "react-router": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\react-router",
+          "react-router-dom": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\react-router-dom"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/crossorigin/crossorigin": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/crossorigin/crossorigin.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/crossorigin/crossorigin",
+      "key": "crossorigin",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand",
+      "key": "depsOnDemand",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onStart": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/devTool/devTool": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/devTool/devTool.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/devTool/devTool",
+      "key": "devTool",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 4
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker",
+      "key": "esbuildHelperChecker",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 114
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/esmi/esmi": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/esmi/esmi.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/esmi/esmi",
+      "key": "esmi",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 32
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/exportStatic/exportStatic": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/exportStatic/exportStatic.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/exportStatic/exportStatic",
+      "key": "exportStatic",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 10
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/favicons/favicons": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/favicons/favicons.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/favicons/favicons",
+      "key": "favicons",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyAppData": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/helmet/helmet": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/helmet/helmet.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/helmet/helmet",
+      "key": "helmet",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/icons/icons": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/icons/icons.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/icons/icons",
+      "key": "icons",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/mock/mock": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/mock/mock.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/mock/mock",
+      "key": "mock",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 30
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/mpa/mpa": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/mpa/mpa.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/mpa/mpa",
+      "key": "mpa",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/okam/okam": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/okam/okam.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/okam/okam",
+      "key": "okam",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/overrides/overrides": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/overrides/overrides.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/overrides/overrides",
+      "key": "overrides",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/phantomDependency/phantomDependency": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/phantomDependency/phantomDependency.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/phantomDependency/phantomDependency",
+      "key": "phantomDependency",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill",
+      "key": "polyfill",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            1
+          ]
+        },
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill",
+      "key": "publicPathPolyfill",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/prepare/prepare": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/prepare/prepare.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/prepare/prepare",
+      "key": "prepare",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/routePrefetch/routePrefetch": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/routePrefetch/routePrefetch.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/routePrefetch/routePrefetch",
+      "key": "routePrefetch",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/stagewise/stagewise": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/stagewise/stagewise.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/stagewise/stagewise",
+      "key": "stagewise",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/terminal/terminal": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/terminal/terminal.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/terminal/terminal",
+      "key": "terminal",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/tmpFiles/tmpFiles": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/tmpFiles/tmpFiles.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/tmpFiles/tmpFiles",
+      "key": "tmpFiles",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/clientLoader/clientLoader": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/clientLoader/clientLoader.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/clientLoader/clientLoader",
+      "key": "clientLoader",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps",
+      "key": "routeProps",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/ssr/ssr": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/ssr/ssr.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/ssr/ssr",
+      "key": "ssr",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/tmpFiles/configTypes": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/tmpFiles/configTypes.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/tmpFiles/configTypes",
+      "key": "configTypes",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/transform/transform": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/transform/transform.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/transform/transform",
+      "key": "transform",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/lowImport/lowImport": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/lowImport/lowImport.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/lowImport/lowImport",
+      "key": "lowImport",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/vite/vite": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/vite/vite.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/vite/vite",
+      "key": "vite",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute",
+      "key": "apiRoute",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 4
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/monorepo/redirect": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/monorepo/redirect.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/monorepo/redirect",
+      "key": "monorepoRedirect",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 18
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/test/test": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/test/test.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/test/test",
+      "key": "test",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent",
+      "key": "clickToComponent",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/legacy/legacy": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/legacy/legacy.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/legacy/legacy",
+      "key": "legacy",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose",
+      "key": "classPropertiesLoose",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/webpack/webpack": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/webpack/webpack.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/webpack/webpack",
+      "key": "preset-umi:webpack",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/swc/swc": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/swc/swc.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/swc/swc",
+      "key": "swc",
+      "config": {},
+      "time": {
+        "hooks": {
+          "addOnDemandDeps": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/ui/ui": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/ui/ui.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/ui/ui",
+      "key": "ui",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 5
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/mako/mako": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/mako/mako.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/mako/mako",
+      "key": "mako",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/utoopack/utoopack": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/utoopack/utoopack.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/utoopack/utoopack",
+      "key": "utoopack",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian",
+      "key": "hmrGuardian",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 4
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad",
+      "key": "routePreloadOnLoad",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 25
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/forget/forget": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/forget/forget.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/forget/forget",
+      "key": "forget",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/bundler/bundler": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/features/bundler/bundler.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/bundler/bundler",
+      "key": "preset-umi:bundler",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/build": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/build.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/build",
+      "key": "build",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/config/config": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/config/config.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/config/config",
+      "key": "config",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 61
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/dev/dev": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/dev/dev.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/dev/dev",
+      "key": "dev",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 29
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/help": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/help.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/help",
+      "key": "help",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/lint": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/lint.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/lint",
+      "key": "lint",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/setup": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/setup.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/setup",
+      "key": "setup",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/deadcode": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/deadcode.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/deadcode",
+      "key": "deadcode",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/version": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/version.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/version",
+      "key": "version",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/page": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/page.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/page",
+      "key": "generator:page",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/prettier": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/prettier.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/prettier",
+      "key": "generator:prettier",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/tsconfig": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/tsconfig.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/tsconfig",
+      "key": "generator:tsconfig",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/jest": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/jest.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/jest",
+      "key": "generator:jest",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/tailwindcss": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/tailwindcss.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/tailwindcss",
+      "key": "generator:tailwindcss",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/dva": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/dva.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/dva",
+      "key": "generator:dva",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/component": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/component.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/component",
+      "key": "generator:component",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/mock": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/mock.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/mock",
+      "key": "generator:mock",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/cypress": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/cypress.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/cypress",
+      "key": "generator:cypress",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/api": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/api.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/api",
+      "key": "generator:api",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/precommit": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/generators/precommit.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/precommit",
+      "key": "generator:precommit",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/plugin": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/plugin.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/plugin",
+      "key": "command:plugin",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/verify-commit": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/verify-commit.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/verify-commit",
+      "key": "verifyCommit",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/preview": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/preview.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/preview",
+      "key": "preview",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 20
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/mfsu/mfsu": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/preset-umi/dist/commands/mfsu/mfsu.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/mfsu/mfsu",
+      "key": "mfsu-cli",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "@umijs/plugin-run": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/plugin-run/dist/index.js",
+      "id": "@umijs/plugin-run",
+      "key": "run",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/core/dist/service/generatePlugin": {
+      "cwd": "F:\\MIXMLAAL\\apps\\react-admin",
+      "type": "plugin",
+      "path": "F:/MIXMLAAL/apps/react-admin/node_modules/@umijs/core/dist/service/generatePlugin.js",
+      "id": "./node_modules/@umijs/core/dist/service/generatePlugin",
+      "key": "generatePlugin",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    }
+  },
+  "presets": [],
+  "name": "build",
+  "args": {
+    "_": []
+  },
+  "userConfig": {
+    "routes": [
+      {
+        "path": "/user",
+        "layout": false,
+        "routes": [
+          {
+            "path": "/user/login",
+            "name": "login",
+            "component": "./User/Login"
+          },
+          {
+            "path": "/user/register",
+            "name": "register",
+            "component": "./User/Register"
+          }
+        ]
+      },
+      {
+        "path": "/",
+        "redirect": "/dashboard"
+      },
+      {
+        "path": "/dashboard",
+        "name": "dashboard",
+        "icon": "Dashboard",
+        "component": "./Dashboard"
+      },
+      {
+        "path": "/admin",
+        "name": "admin",
+        "icon": "User",
+        "routes": [
+          {
+            "path": "/admin/user",
+            "name": "user",
+            "component": "./Admin/User"
+          },
+          {
+            "path": "/admin/role",
+            "name": "role",
+            "component": "./Admin/Role"
+          },
+          {
+            "path": "/admin/permission",
+            "name": "permission",
+            "component": "./Admin/Permission"
+          }
+        ]
+      },
+      {
+        "path": "/statistics",
+        "name": "statistics",
+        "icon": "LineChart",
+        "component": "./Statistics"
+      },
+      {
+        "path": "/profile",
+        "name": "profile",
+        "icon": "User",
+        "component": "./Profile"
+      },
+      {
+        "path": "*",
+        "component": "./404"
+      }
+    ],
+    "npmClient": "npm",
+    "proxy": {
+      "/api": {
+        "target": "http://localhost:8081",
+        "changeOrigin": true
+      }
+    },
+    "mock": false,
+    "title": "MIXMLAAL Admin"
+  },
+  "mainConfigFile": "F:\\MIXMLAAL\\apps\\react-admin\\.umirc.ts",
+  "config": {
+    "routeLoader": {
+      "moduleType": "esm"
+    },
+    "mountElementId": "root",
+    "history": {
+      "type": "browser"
+    },
+    "base": "/",
+    "svgr": {},
+    "publicPath": "/",
+    "mfsu": {
+      "strategy": "eager"
+    },
+    "ignoreMomentLocale": true,
+    "externals": {},
+    "autoCSSModules": true,
+    "alias": {
+      "umi": "@@/exports",
+      "react": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\react",
+      "react-dom": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\react-dom",
+      "react-router": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\react-router",
+      "react-router-dom": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\react-router-dom",
+      "@": "F:/MIXMLAAL/apps/react-admin/src",
+      "@@": "F:/MIXMLAAL/apps/react-admin/src/.umi-production",
+      "regenerator-runtime": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\regenerator-runtime"
+    },
+    "routes": [
+      {
+        "path": "/user",
+        "layout": false,
+        "routes": [
+          {
+            "path": "/user/login",
+            "name": "login",
+            "component": "./User/Login"
+          },
+          {
+            "path": "/user/register",
+            "name": "register",
+            "component": "./User/Register"
+          }
+        ]
+      },
+      {
+        "path": "/",
+        "redirect": "/dashboard"
+      },
+      {
+        "path": "/dashboard",
+        "name": "dashboard",
+        "icon": "Dashboard",
+        "component": "./Dashboard"
+      },
+      {
+        "path": "/admin",
+        "name": "admin",
+        "icon": "User",
+        "routes": [
+          {
+            "path": "/admin/user",
+            "name": "user",
+            "component": "./Admin/User"
+          },
+          {
+            "path": "/admin/role",
+            "name": "role",
+            "component": "./Admin/Role"
+          },
+          {
+            "path": "/admin/permission",
+            "name": "permission",
+            "component": "./Admin/Permission"
+          }
+        ]
+      },
+      {
+        "path": "/statistics",
+        "name": "statistics",
+        "icon": "LineChart",
+        "component": "./Statistics"
+      },
+      {
+        "path": "/profile",
+        "name": "profile",
+        "icon": "User",
+        "component": "./Profile"
+      },
+      {
+        "path": "*",
+        "component": "./404"
+      }
+    ],
+    "npmClient": "npm",
+    "proxy": {
+      "/api": {
+        "target": "http://localhost:8081",
+        "changeOrigin": true
+      }
+    },
+    "mock": false,
+    "title": "MIXMLAAL Admin",
+    "targets": {
+      "chrome": 80
+    }
+  },
+  "routes": {
+    "1": {
+      "path": "/user",
+      "layout": false,
+      "id": "1",
+      "absPath": "/user"
+    },
+    "2": {
+      "path": "/user/login",
+      "name": "login",
+      "file": "@/pages/User/Login.tsx",
+      "parentId": "1",
+      "id": "2",
+      "absPath": "/user/login",
+      "__content": "import { useState, useEffect } from 'react';\nimport { history } from '@umijs/max';\nimport { message } from 'antd';\nimport { getUserInfo } from '../services/user';\n\nexport default function Login() {\n  const [loading, setLoading] = useState(false);\n\n  const handleSubmit = async (values: { username: string; password: string }) => {\n    setLoading(true);\n    try {\n      const { data } = await fetch('/api/auth/login', {\n        method: 'POST',\n        headers: { 'Content-Type': 'application/json' },\n        body: JSON.stringify(values),\n      }).then(res => res.json());\n\n      if (data?.token) {\n        localStorage.setItem('token', data.token);\n        localStorage.setItem('user', JSON.stringify(data.user));\n        message.success('登录成功');\n        history.push('/dashboard');\n      }\n    } catch (error) {\n      message.error('登录失败');\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>\n      <div style={{ width: 400, padding: 24, background: '#fff', borderRadius: 8 }}>\n        <h1 style={{ textAlign: 'center', marginBottom: 24 }}>MIXMLAAL Admin</h1>\n        <form onSubmit={(e) => {\n          e.preventDefault();\n          const formData = new FormData(e.target as HTMLFormElement);\n          handleSubmit({\n            username: formData.get('username') as string,\n            password: formData.get('password') as string,\n          });\n        }}>\n          <input name=\"username\" placeholder=\"用户名\" style={{ width: '100%', marginBottom: 16, padding: '8px 12px' }} required />\n          <input name=\"password\" type=\"password\" placeholder=\"密码\" style={{ width: '100%', marginBottom: 16, padding: '8px 12px' }} required />\n          <button type=\"submit\" disabled={loading} style={{ width: '100%', padding: '8px 12px', background: '#1890ff', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer' }}>\n            {loading ? '登录中...' : '登录'}\n          </button>\n        </form>\n      </div>\n    </div>\n  );\n}\n",
+      "__isJSFile": true,
+      "__absFile": "F:/MIXMLAAL/apps/react-admin/src/pages/User/Login.tsx"
+    },
+    "3": {
+      "path": "/user/register",
+      "name": "register",
+      "file": "@/pages/User/Register.tsx",
+      "parentId": "1",
+      "id": "3",
+      "absPath": "/user/register",
+      "__content": "import { useState } from 'react';\nimport { Form, Input, Button, Card, message } from 'antd';\nimport { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';\nimport { history } from '@umijs/max';\n\nexport default function Register() {\n  const [loading, setLoading] = useState(false);\n\n  const handleSubmit = async (values: { username: string; password: string; confirmPassword: string; email: string }) => {\n    if (values.password !== values.confirmPassword) {\n      message.error('两次密码输入不一致');\n      return;\n    }\n\n    setLoading(true);\n    try {\n      const response = await fetch('/api/auth/register', {\n        method: 'POST',\n        headers: { 'Content-Type': 'application/json' },\n        body: JSON.stringify({\n          username: values.username,\n          password: values.password,\n          email: values.email,\n          nickname: values.username,\n        }),\n      });\n\n      if (response.ok) {\n        message.success('注册成功，请登录');\n        history.push('/user/login');\n      } else {\n        const data = await response.json();\n        message.error(data.message || '注册失败');\n      }\n    } catch (error) {\n      message.error('注册失败');\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <div style={{\n      display: 'flex',\n      justifyContent: 'center',\n      alignItems: 'center',\n      minHeight: '100vh',\n      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'\n    }}>\n      <Card style={{ width: 400 }} bordered={false}>\n        <div style={{ textAlign: 'center', marginBottom: 24 }}>\n          <h1 style={{ fontSize: 24, marginBottom: 8 }}>MIXMLAAL Admin</h1>\n          <p style={{ color: '#666' }}>用户注册</p>\n        </div>\n\n        <Form onFinish={handleSubmit} layout=\"vertical\">\n          <Form.Item\n            name=\"username\"\n            label=\"用户名\"\n            rules={[{ required: true, message: '请输入用户名' }]}\n          >\n            <Input prefix={<UserOutlined />} placeholder=\"请输入用户名\" size=\"large\" />\n          </Form.Item>\n\n          <Form.Item\n            name=\"email\"\n            label=\"邮箱\"\n            rules={[\n              { required: true, message: '请输入邮箱' },\n              { type: 'email', message: '请输入正确的邮箱格式' }\n            ]}\n          >\n            <Input prefix={<MailOutlined />} placeholder=\"请输入邮箱\" size=\"large\" />\n          </Form.Item>\n\n          <Form.Item\n            name=\"password\"\n            label=\"密码\"\n            rules={[\n              { required: true, message: '请输入密码' },\n              { min: 6, message: '密码至少6位' }\n            ]}\n          >\n            <Input.Password prefix={<LockOutlined />} placeholder=\"请输入密码\" size=\"large\" />\n          </Form.Item>\n\n          <Form.Item\n            name=\"confirmPassword\"\n            label=\"确认密码\"\n            dependencies={['password']}\n            rules={[\n              { required: true, message: '请确认密码' },\n              ({ getFieldValue }) => ({\n                validator(_, value) {\n                  if (!value || getFieldValue('password') === value) {\n                    return Promise.resolve();\n                  }\n                  return Promise.reject(new Error('两次密码输入不一致'));\n                },\n              }),\n            ]}\n          >\n            <Input.Password prefix={<LockOutlined />} placeholder=\"请确认密码\" size=\"large\" />\n          </Form.Item>\n\n          <Form.Item>\n            <Button type=\"primary\" htmlType=\"submit\" loading={loading} block size=\"large\">\n              注册\n            </Button>\n          </Form.Item>\n\n          <div style={{ textAlign: 'center' }}>\n            <Button type=\"link\" onClick={() => history.push('/user/login')}>\n              已有账号？立即登录\n            </Button>\n          </div>\n        </Form>\n      </Card>\n    </div>\n  );\n}\n",
+      "__isJSFile": true,
+      "__absFile": "F:/MIXMLAAL/apps/react-admin/src/pages/User/Register.tsx"
+    },
+    "4": {
+      "path": "/",
+      "redirect": "/dashboard",
+      "id": "4",
+      "absPath": "/"
+    },
+    "5": {
+      "path": "/dashboard",
+      "name": "dashboard",
+      "icon": "Dashboard",
+      "file": "@/pages/Dashboard.tsx",
+      "id": "5",
+      "absPath": "/dashboard",
+      "__content": "import { PageContainer } from '@ant-design/pro-components';\nimport { Card, Row, Col, Statistic, List, Tag, Progress } from 'antd';\nimport { UserOutlined, ShoppingCartOutlined, DollarOutlined, RiseOutlined, TeamOutlined, SafetyOutlined } from '@ant-design/icons';\nimport { useState, useEffect } from 'react';\n\nconst statisticsData = {\n  totalUsers: 12580,\n  todayUsers: 156,\n  totalOrders: 42850,\n  todayOrders: 328,\n  totalRevenue: 1256800,\n  todayRevenue: 28560,\n  userGrowth: 12.5,\n  orderGrowth: 8.3,\n};\n\nconst recentActivities = [\n  { id: 1, user: 'admin', action: '登录系统', time: '2024-01-15 14:30:00', type: 'login' },\n  { id: 2, user: 'user001', action: '创建订单 #12345', time: '2024-01-15 14:25:00', type: 'order' },\n  { id: 3, user: 'user002', action: '完成支付 ¥128.00', time: '2024-01-15 14:20:00', type: 'payment' },\n  { id: 4, user: 'user003', action: '更新个人资料', time: '2024-01-15 14:15:00', type: 'profile' },\n  { id: 5, user: 'admin', action: '添加新用户 user004', time: '2024-01-15 14:10:00', type: 'admin' },\n];\n\nconst systemHealth = {\n  cpu: 35,\n  memory: 62,\n  disk: 48,\n  network: 28,\n};\n\nexport default function Dashboard() {\n  const [stats] = useState(statisticsData);\n\n  return (\n    <PageContainer title=\"仪表盘\">\n      <Row gutter={[16, 16]}>\n        <Col xs={24} sm={12} lg={6}>\n          <Card bordered={false} hoverable>\n            <Statistic\n              title=\"总用户数\"\n              value={stats.totalUsers}\n              prefix={<UserOutlined style={{ color: '#1890ff' }} />}\n              suffix=\"人\"\n            />\n            <div style={{ marginTop: 8 }}>\n              <RiseOutlined style={{ color: '#52c41a' }} /> {stats.userGrowth}% 较上月\n            </div>\n          </Card>\n        </Col>\n\n        <Col xs={24} sm={12} lg={6}>\n          <Card bordered={false} hoverable>\n            <Statistic\n              title=\"今日新增\"\n              value={stats.todayUsers}\n              prefix={<TeamOutlined style={{ color: '#722ed1' }} />}\n              suffix=\"人\"\n            />\n          </Card>\n        </Col>\n\n        <Col xs={24} sm={12} lg={6}>\n          <Card bordered={false} hoverable>\n            <Statistic\n              title=\"总订单数\"\n              value={stats.totalOrders}\n              prefix={<ShoppingCartOutlined style={{ color: '#fa8c16' }} />}\n              suffix=\"单\"\n            />\n            <div style={{ marginTop: 8 }}>\n              <RiseOutlined style={{ color: '#52c41a' }} /> {stats.orderGrowth}% 较上月\n            </div>\n          </Card>\n        </Col>\n\n        <Col xs={24} sm={12} lg={6}>\n          <Card bordered={false} hoverable>\n            <Statistic\n              title=\"总收入\"\n              value={stats.totalRevenue}\n              prefix={<DollarOutlined style={{ color: '#13c2c2' }} />}\n              precision={2}\n              suffix=\"元\"\n            />\n          </Card>\n        </Col>\n      </Row>\n\n      <Row gutter={[16, 16]} style={{ marginTop: 16 }}>\n        <Col xs={24} lg={16}>\n          <Card title=\"最近活动\" bordered={false}>\n            <List\n              dataSource={recentActivities}\n              renderItem={(item) => (\n                <List.Item>\n                  <List.Item.Meta\n                    avatar={\n                      <Tag color={\n                        item.type === 'login' ? 'blue' :\n                        item.type === 'order' ? 'green' :\n                        item.type === 'payment' ? 'orange' :\n                        item.type === 'admin' ? 'purple' : 'default'\n                      }>\n                        {item.type.toUpperCase()}\n                      </Tag>\n                    }\n                    title={<span>{item.user} <span style={{ color: '#666' }}>{item.action}</span></span>}\n                    description={item.time}\n                  />\n                </List.Item>\n              )}\n            />\n          </Card>\n        </Col>\n\n        <Col xs={24} lg={8}>\n          <Card title=\"系统健康状态\" bordered={false}>\n            <div style={{ marginBottom: 16 }}>\n              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>\n                <span>CPU 使用率</span>\n                <span>{systemHealth.cpu}%</span>\n              </div>\n              <Progress percent={systemHealth.cpu} strokeColor=\"#1890ff\" />\n            </div>\n\n            <div style={{ marginBottom: 16 }}>\n              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>\n                <span>内存使用</span>\n                <span>{systemHealth.memory}%</span>\n              </div>\n              <Progress percent={systemHealth.memory} strokeColor=\"#722ed1\" />\n            </div>\n\n            <div style={{ marginBottom: 16 }}>\n              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>\n                <span>磁盘使用</span>\n                <span>{systemHealth.disk}%</span>\n              </div>\n              <Progress percent={systemHealth.disk} strokeColor=\"#fa8c16\" />\n            </div>\n\n            <div>\n              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>\n                <span>网络负载</span>\n                <span>{systemHealth.network}%</span>\n              </div>\n              <Progress percent={systemHealth.network} strokeColor=\"#13c2c2\" />\n            </div>\n          </Card>\n\n          <Card title=\"安全概览\" bordered={false} style={{ marginTop: 16 }}>\n            <Row gutter={16}>\n              <Col span={12}>\n                <Statistic title=\"安全评分\" value={98} suffix=\"/100\" valueStyle={{ color: '#52c41a' }} />\n              </Col>\n              <Col span={12}>\n                <SafetyOutlined style={{ fontSize: 48, color: '#52c41a', display: 'block', textAlign: 'center' }} />\n              </Col>\n            </Row>\n            <div style={{ marginTop: 8, fontSize: 12, color: '#666' }}>\n              系统安全状态良好，无异常报告\n            </div>\n          </Card>\n        </Col>\n      </Row>\n\n      <Row gutter={[16, 16]} style={{ marginTop: 16 }}>\n        <Col span={24}>\n          <Card title=\"系统信息\" bordered={false}>\n            <Row gutter={16}>\n              <Col xs={24} sm={8}>\n                <div style={{ textAlign: 'center' }}>\n                  <div style={{ fontSize: 24, fontWeight: 'bold', color: '#1890ff' }}>v1.0.0</div>\n                  <div style={{ color: '#666' }}>系统版本</div>\n                </div>\n              </Col>\n              <Col xs={24} sm={8}>\n                <div style={{ textAlign: 'center' }}>\n                  <div style={{ fontSize: 24, fontWeight: 'bold', color: '#722ed1' }}>React 18</div>\n                  <div style={{ color: '#666' }}>前端框架</div>\n                </div>\n              </Col>\n              <Col xs={24} sm={8}>\n                <div style={{ textAlign: 'center' }}>\n                  <div style={{ fontSize: 24, fontWeight: 'bold', color: '#52c41a' }}>正常运行</div>\n                  <div style={{ color: '#666' }}>运行状态</div>\n                </div>\n              </Col>\n            </Row>\n          </Card>\n        </Col>\n      </Row>\n    </PageContainer>\n  );\n}\n",
+      "__isJSFile": true,
+      "__absFile": "F:/MIXMLAAL/apps/react-admin/src/pages/Dashboard.tsx"
+    },
+    "6": {
+      "path": "/admin",
+      "name": "admin",
+      "icon": "User",
+      "id": "6",
+      "absPath": "/admin"
+    },
+    "7": {
+      "path": "/admin/user",
+      "name": "user",
+      "file": "@/pages/Admin/User.tsx",
+      "parentId": "6",
+      "id": "7",
+      "absPath": "/admin/user",
+      "__content": "import { PageContainer, ProCard, ProTable } from '@ant-design/pro-components';\nimport type { ProColumns } from '@ant-design/pro-components';\nimport { Button, Space, Modal, Form, Input, message, Tag, Popconfirm } from 'antd';\nimport { PlusOutlined } from '@ant-design/icons';\nimport { useState, useEffect } from 'react';\nimport { getUserList, createUser, updateUser, deleteUser } from '../../services/api';\n\nconst mockData = [\n  { id: 1, username: 'admin', email: 'admin@mixmlaal.com', nickname: '管理员', status: 1, createTime: '2024-01-01' },\n  { id: 2, username: 'user1', email: 'user1@mixmlaal.com', nickname: '用户1', status: 1, createTime: '2024-01-02' },\n  { id: 3, username: 'user2', email: 'user2@mixmlaal.com', nickname: '用户2', status: 0, createTime: '2024-01-03' },\n  { id: 4, username: 'user3', email: 'user3@mixmlaal.com', nickname: '用户3', status: 1, createTime: '2024-01-04' },\n  { id: 5, username: 'user4', email: 'user4@mixmlaal.com', nickname: '用户4', status: 0, createTime: '2024-01-05' },\n];\n\nexport default function User() {\n  const [data, setData] = useState(mockData);\n  const [modalVisible, setModalVisible] = useState(false);\n  const [editingUser, setEditingUser] = useState<any>(null);\n  const [form] = Form.useForm();\n\n  const handleAdd = () => {\n    setEditingUser(null);\n    form.resetFields();\n    setModalVisible(true);\n  };\n\n  const handleEdit = (record: any) => {\n    setEditingUser(record);\n    form.setFieldsValue(record);\n    setModalVisible(true);\n  };\n\n  const handleDelete = async (id: number) => {\n    try {\n      await deleteUser(id);\n      setData(data.filter(item => item.id !== id));\n      message.success('删除成功');\n    } catch (error) {\n      setData(data.filter(item => item.id !== id));\n      message.success('删除成功');\n    }\n  };\n\n  const handleSubmit = async () => {\n    try {\n      const values = await form.validateFields();\n      if (editingUser) {\n        try {\n          await updateUser({ ...values, id: editingUser.id });\n        } catch (e) {}\n        setData(data.map(item => item.id === editingUser.id ? { ...item, ...values } : item));\n        message.success('更新成功');\n      } else {\n        try {\n          await createUser(values);\n        } catch (e) {}\n        setData([...data, { ...values, id: data.length + 1, createTime: new Date().toISOString().split('T')[0] }]);\n        message.success('创建成功');\n      }\n      setModalVisible(false);\n    } catch (error) {\n      message.error('操作失败');\n    }\n  };\n\n  const columns: ProColumns[] = [\n    { title: 'ID', dataIndex: 'id', key: 'id', valueType: 'index', width: 60 },\n    { title: '用户名', dataIndex: 'username', key: 'username', copyable: true },\n    { title: '昵称', dataIndex: 'nickname', key: 'nickname' },\n    { title: '邮箱', dataIndex: 'email', key: 'email', copyable: true },\n    {\n      title: '状态',\n      dataIndex: 'status',\n      key: 'status',\n      valueType: 'select',\n      valueEnum: { 1: { text: '正常', status: 'Success' }, 0: { text: '禁用', status: 'Error' } },\n      render: (_, record) => (\n        <Tag color={record.status === 1 ? 'green' : 'red'}>\n          {record.status === 1 ? '正常' : '禁用'}\n        </Tag>\n      ),\n    },\n    { title: '创建时间', dataIndex: 'createTime', key: 'createTime', valueType: 'dateTime' },\n    {\n      title: '操作',\n      key: 'action',\n      width: 180,\n      render: (_, record) => (\n        <Space size=\"small\">\n          <Button type=\"link\" size=\"small\" onClick={() => handleEdit(record)}>编辑</Button>\n          <Popconfirm title=\"确认删除？\" onConfirm={() => handleDelete(record.id)}>\n            <Button type=\"link\" size=\"small\" danger>删除</Button>\n          </Popconfirm>\n        </Space>\n      ),\n    },\n  ];\n\n  return (\n    <PageContainer title=\"用户管理\">\n      <ProTable\n        columns={columns}\n        dataSource={data}\n        rowKey=\"id\"\n        search={{ labelWidth: 'auto' }}\n        pagination={{ pageSize: 10 }}\n        options={{ reload: true, density: true, fullScreen: true }}\n        toolBarRender={() => [\n          <Button key=\"add\" type=\"primary\" icon={<PlusOutlined />} onClick={handleAdd}>\n            新建用户\n          </Button>,\n        ]}\n      />\n      <Modal\n        title={editingUser ? '编辑用户' : '新建用户'}\n        open={modalVisible}\n        onOk={handleSubmit}\n        onCancel={() => setModalVisible(false)}\n        width={500}\n      >\n        <Form form={form} layout=\"vertical\">\n          <Form.Item name=\"username\" label=\"用户名\" rules={[{ required: true, message: '请输入用户名' }]}>\n            <Input placeholder=\"请输入用户名\" />\n          </Form.Item>\n          <Form.Item name=\"nickname\" label=\"昵称\" rules={[{ required: true, message: '请输入昵称' }]}>\n            <Input placeholder=\"请输入昵称\" />\n          </Form.Item>\n          <Form.Item name=\"email\" label=\"邮箱\" rules={[{ required: true, type: 'email', message: '请输入正确的邮箱' }]}>\n            <Input placeholder=\"请输入邮箱\" />\n          </Form.Item>\n          {!editingUser && (\n            <Form.Item name=\"password\" label=\"密码\" rules={[{ required: true, message: '请输入密码' }]}>\n              <Input.Password placeholder=\"请输入密码\" />\n            </Form.Item>\n          )}\n        </Form>\n      </Modal>\n    </PageContainer>\n  );\n}\n",
+      "__isJSFile": true,
+      "__absFile": "F:/MIXMLAAL/apps/react-admin/src/pages/Admin/User.tsx"
+    },
+    "8": {
+      "path": "/admin/role",
+      "name": "role",
+      "file": "@/pages/Admin/Role.tsx",
+      "parentId": "6",
+      "id": "8",
+      "absPath": "/admin/role",
+      "__content": "import { useState } from 'react';\nimport { Table, Button, Space, Modal, Form, Input, message } from 'antd';\n\nconst mockData = [\n  { id: 1, code: 'admin', name: '管理员', description: '系统管理员', status: 1, createTime: '2024-01-01' },\n  { id: 2, code: 'user', name: '普通用户', description: '普通用户角色', status: 1, createTime: '2024-01-02' },\n  { id: 3, code: 'guest', name: '访客', description: '访客角色', status: 0, createTime: '2024-01-03' },\n];\n\nexport default function Role() {\n  const [data, setData] = useState(mockData);\n  const [modalVisible, setModalVisible] = useState(false);\n  const [editingRole, setEditingRole] = useState<any>(null);\n  const [form] = Form.useForm();\n\n  const columns = [\n    { title: 'ID', dataIndex: 'id', key: 'id' },\n    { title: '角色代码', dataIndex: 'code', key: 'code' },\n    { title: '角色名称', dataIndex: 'name', key: 'name' },\n    { title: '描述', dataIndex: 'description', key: 'description' },\n    { title: '状态', dataIndex: 'status', key: 'status', render: (v: number) => v === 1 ? '正常' : '禁用' },\n    { title: '创建时间', dataIndex: 'createTime', key: 'createTime' },\n    {\n      title: '操作',\n      key: 'action',\n      render: (_: any, record: any) => (\n        <Space>\n          <Button type=\"link\" onClick={() => handleEdit(record)}>编辑</Button>\n          <Button type=\"link\" danger onClick={() => handleDelete(record.id)}>删除</Button>\n        </Space>\n      ),\n    },\n  ];\n\n  const handleEdit = (record: any) => {\n    setEditingRole(record);\n    form.setFieldsValue(record);\n    setModalVisible(true);\n  };\n\n  const handleDelete = (id: number) => {\n    setData(data.filter(item => item.id !== id));\n    message.success('删除成功');\n  };\n\n  const handleSubmit = async () => {\n    const values = await form.validateFields();\n    if (editingRole) {\n      setData(data.map(item => item.id === editingRole.id ? { ...item, ...values } : item));\n      message.success('更新成功');\n    } else {\n      setData([...data, { ...values, id: data.length + 1, createTime: new Date().toISOString().split('T')[0] }]);\n      message.success('创建成功');\n    }\n    setModalVisible(false);\n    form.resetFields();\n  };\n\n  return (\n    <div>\n      <h1 style={{ fontSize: 24, marginBottom: 24 }}>角色管理</h1>\n      <Button type=\"primary\" onClick={() => { setEditingRole(null); form.resetFields(); setModalVisible(true); }} style={{ marginBottom: 16 }}>\n        新建角色\n      </Button>\n      <Table dataSource={data} columns={columns} rowKey=\"id\" />\n      <Modal title={editingRole ? '编辑角色' : '新建角色'} open={modalVisible} onOk={handleSubmit} onCancel={() => setModalVisible(false)}>\n        <Form form={form} layout=\"vertical\">\n          <Form.Item name=\"code\" label=\"角色代码\" rules={[{ required: true }]}>\n            <Input />\n          </Form.Item>\n          <Form.Item name=\"name\" label=\"角色名称\" rules={[{ required: true }]}>\n            <Input />\n          </Form.Item>\n          <Form.Item name=\"description\" label=\"描述\">\n            <Input />\n          </Form.Item>\n        </Form>\n      </Modal>\n    </div>\n  );\n}\n",
+      "__isJSFile": true,
+      "__absFile": "F:/MIXMLAAL/apps/react-admin/src/pages/Admin/Role.tsx"
+    },
+    "9": {
+      "path": "/admin/permission",
+      "name": "permission",
+      "file": "@/pages/Admin/Permission.tsx",
+      "parentId": "6",
+      "id": "9",
+      "absPath": "/admin/permission",
+      "__content": "import { useState } from 'react';\nimport { Table, Button, Space, Modal, Form, Input, Select, message, Tree } from 'antd';\n\nconst mockData = [\n  { id: 1, code: 'user:view', name: '查看用户', type: 'button', path: '/user', sort: 1 },\n  { id: 2, code: 'user:create', name: '创建用户', type: 'button', path: '/user', sort: 2 },\n  { id: 3, code: 'user:edit', name: '编辑用户', type: 'button', path: '/user', sort: 3 },\n  { id: 4, code: 'user:delete', name: '删除用户', type: 'button', path: '/user', sort: 4 },\n  { id: 5, code: 'role:view', name: '查看角色', type: 'button', path: '/role', sort: 5 },\n];\n\nconst treeData = [\n  {\n    title: '用户管理',\n    key: 'user',\n    children: [\n      { title: '查看用户', key: 'user:view' },\n      { title: '创建用户', key: 'user:create' },\n      { title: '编辑用户', key: 'user:edit' },\n      { title: '删除用户', key: 'user:delete' },\n    ],\n  },\n  {\n    title: '角色管理',\n    key: 'role',\n    children: [\n      { title: '查看角色', key: 'role:view' },\n      { title: '创建角色', key: 'role:create' },\n      { title: '编辑角色', key: 'role:edit' },\n    ],\n  },\n];\n\nexport default function Permission() {\n  const [data, setData] = useState(mockData);\n  const [modalVisible, setModalVisible] = useState(false);\n  const [form] = Form.useForm();\n\n  const columns = [\n    { title: 'ID', dataIndex: 'id', key: 'id' },\n    { title: '权限代码', dataIndex: 'code', key: 'code' },\n    { title: '权限名称', dataIndex: 'name', key: 'name' },\n    { title: '类型', dataIndex: 'type', key: 'type' },\n    { title: '路径', dataIndex: 'path', key: 'path' },\n    { title: '排序', dataIndex: 'sort', key: 'sort' },\n    {\n      title: '操作',\n      key: 'action',\n      render: (_: any, record: any) => (\n        <Space>\n          <Button type=\"link\" onClick={() => handleEdit(record)}>编辑</Button>\n          <Button type=\"link\" danger onClick={() => handleDelete(record.id)}>删除</Button>\n        </Space>\n      ),\n    },\n  ];\n\n  const handleEdit = (record: any) => {\n    form.setFieldsValue(record);\n    setModalVisible(true);\n  };\n\n  const handleDelete = (id: number) => {\n    setData(data.filter(item => item.id !== id));\n    message.success('删除成功');\n  };\n\n  const handleSubmit = async () => {\n    const values = await form.validateFields();\n    setData([...data, { ...values, id: data.length + 1 }]);\n    message.success('创建成功');\n    setModalVisible(false);\n    form.resetFields();\n  };\n\n  return (\n    <div>\n      <h1 style={{ fontSize: 24, marginBottom: 24 }}>权限管理</h1>\n      <Button type=\"primary\" onClick={() => { form.resetFields(); setModalVisible(true); }} style={{ marginBottom: 16 }}>\n        新建权限\n      </Button>\n      <Table dataSource={data} columns={columns} rowKey=\"id\" />\n      <Modal title=\"新建权限\" open={modalVisible} onOk={handleSubmit} onCancel={() => setModalVisible(false)} width={600}>\n        <Form form={form} layout=\"vertical\">\n          <Form.Item name=\"code\" label=\"权限代码\" rules={[{ required: true }]}>\n            <Input />\n          </Form.Item>\n          <Form.Item name=\"name\" label=\"权限名称\" rules={[{ required: true }]}>\n            <Input />\n          </Form.Item>\n          <Form.Item name=\"type\" label=\"类型\" rules={[{ required: true }]}>\n            <Select options={[{ value: 'button', label: '按钮' }, { value: 'menu', label: '菜单' }, { value: 'api', label: 'API' }]} />\n          </Form.Item>\n          <Form.Item name=\"path\" label=\"路径\">\n            <Input />\n          </Form.Item>\n        </Form>\n      </Modal>\n      <h2 style={{ marginTop: 32, marginBottom: 16 }}>权限树</h2>\n      <Tree treeData={treeData} checkable defaultExpandAll />\n    </div>\n  );\n}\n",
+      "__isJSFile": true,
+      "__absFile": "F:/MIXMLAAL/apps/react-admin/src/pages/Admin/Permission.tsx"
+    },
+    "10": {
+      "path": "/statistics",
+      "name": "statistics",
+      "icon": "LineChart",
+      "file": "@/pages/Statistics.tsx",
+      "id": "10",
+      "absPath": "/statistics",
+      "__content": "import { PageContainer } from '@ant-design/pro-components';\nimport { Card, Row, Col, Statistic, Table, Progress, Tag, DatePicker, Select } from 'antd';\nimport { ArrowUpOutlined, ArrowDownOutlined, UserOutlined, ShoppingCartOutlined, DollarOutlined } from '@ant-design/icons';\nimport { useState } from 'react';\n\nconst { RangePicker } = DatePicker;\n\nconst mockChartData = {\n  labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],\n  users: [1200, 1450, 1680, 1920, 2100, 2350, 2580, 2890, 3120, 3350, 3580, 3890],\n  orders: [4500, 5200, 5800, 6400, 7100, 7800, 8500, 9200, 9900, 10600, 11300, 12000],\n  revenue: [125000, 142000, 158000, 175000, 192000, 210000, 228000, 246000, 265000, 284000, 303000, 325000],\n};\n\nconst topProducts = [\n  { id: 1, name: 'iPhone 15 Pro', sales: 1256, revenue: 12560000, growth: 15.8 },\n  { id: 2, name: 'MacBook Pro 14', sales: 892, revenue: 17840000, growth: 12.3 },\n  { id: 3, name: 'iPad Air', sales: 756, revenue: 3780000, growth: -2.5 },\n  { id: 4, name: 'AirPods Pro', sales: 2134, revenue: 3201000, growth: 25.6 },\n  { id: 5, name: 'Apple Watch S9', sales: 623, revenue: 3740000, growth: 8.9 },\n];\n\nconst topRegions = [\n  { region: '华东地区', users: 45678, orders: 123456, revenue: 45678900, percentage: 35 },\n  { region: '华南地区', users: 38901, orders: 98765, revenue: 38901200, percentage: 28 },\n  { region: '华北地区', users: 31245, orders: 78901, revenue: 31245500, percentage: 22 },\n  { region: '西南地区', users: 15678, orders: 45678, revenue: 15678500, percentage: 10 },\n  { region: '东北地区', users: 8923, orders: 23456, revenue: 8923400, percentage: 5 },\n];\n\nconst columns = [\n  { title: '排名', dataIndex: 'id', key: 'id', render: (v: number) => v <= 3 ? <Tag color={v === 1 ? 'gold' : v === 2 ? 'silver' : 'bronze'}>{v}</Tag> : v },\n  { title: '商品名称', dataIndex: 'name', key: 'name' },\n  { title: '销量', dataIndex: 'sales', key: 'sales', sorter: (a: any, b: any) => a.sales - b.sales },\n  { title: '销售额', dataIndex: 'revenue', key: 'revenue', render: (v: number) => `¥${(v / 10000).toFixed(2)}万` },\n  {\n    title: '增长率',\n    dataIndex: 'growth',\n    key: 'growth',\n    render: (v: number) => (\n      <span style={{ color: v >= 0 ? '#52c41a' : '#ff4d4f' }}>\n        {v >= 0 ? <ArrowUpOutlined /> : <ArrowDownOutlined />} {Math.abs(v)}%\n      </span>\n    ),\n    sorter: (a: any, b: any) => a.growth - b.growth,\n  },\n];\n\nexport default function Statistics() {\n  const [dateRange, setDateRange] = useState<string>('year');\n  const [chartData] = useState(mockChartData);\n\n  const totalUsers = chartData.users.reduce((a, b) => a + b, 0);\n  const totalOrders = chartData.orders.reduce((a, b) => a + b, 0);\n  const totalRevenue = chartData.revenue.reduce((a, b) => a + b, 0);\n\n  const maxValue = Math.max(...chartData.users);\n\n  return (\n    <PageContainer title=\"数据统计\">\n      <Card bordered={false} style={{ marginBottom: 16 }}>\n        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>\n          <div>\n            <span style={{ marginRight: 8 }}>时间范围：</span>\n            <Select\n              value={dateRange}\n              onChange={setDateRange}\n              options={[\n                { value: 'week', label: '最近一周' },\n                { value: 'month', label: '最近一月' },\n                { value: 'year', label: '最近一年' },\n              ]}\n              style={{ width: 120 }}\n            />\n          </div>\n          <RangePicker />\n        </div>\n      </Card>\n\n      <Row gutter={[16, 16]}>\n        <Col xs={24} sm={12} lg={6}>\n          <Card bordered={false}>\n            <Statistic\n              title=\"年度用户增长\"\n              value={totalUsers}\n              prefix={<UserOutlined style={{ color: '#1890ff' }} />}\n              suffix=\"人\"\n            />\n            <div style={{ marginTop: 8, color: '#52c41a' }}>\n              <ArrowUpOutlined /> 12.5% 较去年\n            </div>\n          </Card>\n        </Col>\n\n        <Col xs={24} sm={12} lg={6}>\n          <Card bordered={false}>\n            <Statistic\n              title=\"年度订单总量\"\n              value={totalOrders}\n              prefix={<ShoppingCartOutlined style={{ color: '#722ed1' }} />}\n              suffix=\"单\"\n            />\n            <div style={{ marginTop: 8, color: '#52c41a' }}>\n              <ArrowUpOutlined /> 8.3% 较去年\n            </div>\n          </Card>\n        </Col>\n\n        <Col xs={24} sm={12} lg={6}>\n          <Card bordered={false}>\n            <Statistic\n              title=\"年度总收入\"\n              value={totalRevenue}\n              prefix={<DollarOutlined style={{ color: '#fa8c16' }} />}\n              precision={2}\n              suffix=\"元\"\n            />\n            <div style={{ marginTop: 8, color: '#52c41a' }}>\n              <ArrowUpOutlined /> 15.8% 较去年\n            </div>\n          </Card>\n        </Col>\n\n        <Col xs={24} sm={12} lg={6}>\n          <Card bordered={false}>\n            <Statistic\n              title=\"平均客单价\"\n              value={(totalRevenue / totalOrders).toFixed(2)}\n              precision={2}\n              suffix=\"元\"\n            />\n            <div style={{ marginTop: 8, color: '#ff4d4f' }}>\n              <ArrowDownOutlined /> 2.1% 较去年\n            </div>\n          </Card>\n        </Col>\n      </Row>\n\n      <Row gutter={[16, 16]} style={{ marginTop: 16 }}>\n        <Col xs={24} lg={12}>\n          <Card title=\"用户增长趋势\" bordered={false}>\n            <div style={{ height: 300, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-around', padding: '20px 0' }}>\n              {chartData.users.map((value, index) => (\n                <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>\n                  <div style={{\n                    width: 40,\n                    height: (value / maxValue) * 220,\n                    background: 'linear-gradient(180deg, #1890ff 0%, #69c0ff 100%)',\n                    borderRadius: '4px 4px 0 0',\n                    transition: 'height 0.3s',\n                  }} />\n                  <span style={{ marginTop: 8, fontSize: 12, color: '#666' }}>{chartData.labels[index]}</span>\n                </div>\n              ))}\n            </div>\n          </Card>\n        </Col>\n\n        <Col xs={24} lg={12}>\n          <Card title=\"订单统计\" bordered={false}>\n            <Table\n              dataSource={topProducts}\n              columns={columns}\n              rowKey=\"id\"\n              pagination={false}\n              size=\"small\"\n            />\n          </Card>\n        </Col>\n      </Row>\n\n      <Row gutter={[16, 16]} style={{ marginTop: 16 }}>\n        <Col span={24}>\n          <Card title=\"区域销售分布\" bordered={false}>\n            <Row gutter={16}>\n              {topRegions.map((item) => (\n                <Col key={item.region} xs={24} sm={12} lg={6}>\n                  <div style={{ marginBottom: 16 }}>\n                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>\n                      <span>{item.region}</span>\n                      <span style={{ color: '#1890ff' }}>{item.percentage}%</span>\n                    </div>\n                    <Progress percent={item.percentage} strokeColor=\"#1890ff\" showInfo={false} />\n                    <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>\n                      用户: {(item.users / 10000).toFixed(1)}万 | 订单: {(item.orders / 10000).toFixed(1)}万 | 销售额: ¥{(item.revenue / 100000000).toFixed(2)}亿\n                    </div>\n                  </div>\n                </Col>\n              ))}\n            </Row>\n          </Card>\n        </Col>\n      </Row>\n    </PageContainer>\n  );\n}\n",
+      "__isJSFile": true,
+      "__absFile": "F:/MIXMLAAL/apps/react-admin/src/pages/Statistics.tsx"
+    },
+    "11": {
+      "path": "/profile",
+      "name": "profile",
+      "icon": "User",
+      "file": "@/pages/Profile.tsx",
+      "id": "11",
+      "absPath": "/profile",
+      "__content": "import { PageContainer } from '@ant-design/pro-components';\nimport { Card, Row, Col, Statistic,Descriptions, Avatar, Tag, Divider } from 'antd';\nimport { UserOutlined, MailOutlined, PhoneOutlined, ClockCircleOutlined } from '@ant-design/icons';\nimport { useState, useEffect } from 'react';\n\nconst mockUserInfo = {\n  id: 1,\n  username: 'admin',\n  nickname: '管理员',\n  email: 'admin@mixmlaal.com',\n  phone: '138****8888',\n  avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',\n  role: '系统管理员',\n  department: '技术部',\n  createTime: '2024-01-01 10:00:00',\n  lastLogin: '2024-01-15 14:30:00',\n  status: 'active',\n};\n\nexport default function Profile() {\n  const [userInfo] = useState(mockUserInfo);\n\n  return (\n    <PageContainer title=\"个人中心\">\n      <Row gutter={[16, 16]}>\n        <Col xs={24} lg={8}>\n          <Card bordered={false}>\n            <div style={{ textAlign: 'center', padding: '20px 0' }}>\n              <Avatar size={120} src={userInfo.avatar} icon={<UserOutlined />} />\n              <h2 style={{ marginTop: 16, marginBottom: 8 }}>{userInfo.nickname}</h2>\n              <Tag color=\"blue\">{userInfo.role}</Tag>\n              <Divider />\n              <Descriptions column={1} size=\"small\">\n                <Descriptions.Item label=\"部门\">{userInfo.department}</Descriptions.Item>\n                <Descriptions.Item label=\"注册时间\">\n                  <ClockCircleOutlined /> {userInfo.createTime}\n                </Descriptions.Item>\n                <Descriptions.Item label=\"最后登录\">\n                  <ClockCircleOutlined /> {userInfo.lastLogin}\n                </Descriptions.Item>\n              </Descriptions>\n            </div>\n          </Card>\n        </Col>\n\n        <Col xs={24} lg={16}>\n          <Card title=\"基本信息\" bordered={false} style={{ marginBottom: 16 }}>\n            <Descriptions column={{ xs: 1, sm: 2 }}>\n              <Descriptions.Item label=\"用户名\">{userInfo.username}</Descriptions.Item>\n              <Descriptions.Item label=\"昵称\">{userInfo.nickname}</Descriptions.Item>\n              <Descriptions.Item label=\"邮箱\">\n                <MailOutlined /> {userInfo.email}\n              </Descriptions.Item>\n              <Descriptions.Item label=\"手机号\">\n                <PhoneOutlined /> {userInfo.phone}\n              </Descriptions.Item>\n              <Descriptions.Item label=\"状态\">\n                <Tag color={userInfo.status === 'active' ? 'green' : 'red'}>\n                  {userInfo.status === 'active' ? '正常' : '禁用'}\n                </Tag>\n              </Descriptions.Item>\n              <Descriptions.Item label=\"角色\">{userInfo.role}</Descriptions.Item>\n            </Descriptions>\n          </Card>\n\n          <Card title=\"账号统计\" bordered={false}>\n            <Row gutter={16}>\n              <Col span={8}>\n                <Statistic title=\"登录次数\" value={156} suffix=\"次\" />\n              </Col>\n              <Col span={8}>\n                <Statistic title=\"操作记录\" value={428} suffix=\"条\" />\n              </Col>\n              <Col span={8}>\n                <Statistic title=\"积分\" value={12580} suffix=\"分\" />\n              </Col>\n            </Row>\n          </Card>\n        </Col>\n      </Row>\n    </PageContainer>\n  );\n}\n",
+      "__isJSFile": true,
+      "__absFile": "F:/MIXMLAAL/apps/react-admin/src/pages/Profile.tsx"
+    },
+    "12": {
+      "path": "*",
+      "file": "@/pages/404.tsx",
+      "id": "12",
+      "absPath": "/*",
+      "__content": "export default () => {\n  return (\n    <div style={{\n      textAlign: 'center',\n      padding: '100px 0',\n      background: '#f0f2f5',\n      minHeight: '100vh'\n    }}>\n      <h1 style={{ fontSize: 120, margin: 0, color: '#d9d9d9' }}>404</h1>\n      <h2 style={{ color: '#666', marginBottom: 24 }}>抱歉，您访问的页面不存在</h2>\n      <a href=\"/\" style={{ color: '#1890ff', fontSize: 16 }}>返回首页</a>\n    </div>\n  );\n};\n",
+      "__isJSFile": true,
+      "__absFile": "F:/MIXMLAAL/apps/react-admin/src/pages/404.tsx"
+    }
+  },
+  "apiRoutes": {},
+  "hasSrcDir": true,
+  "npmClient": "npm",
+  "umi": {
+    "version": "4.6.47",
+    "name": "Umi",
+    "importSource": "umi",
+    "cliName": "umi"
+  },
+  "bundleStatus": {
+    "done": false
+  },
+  "mfsuBundleStatus": {
+    "done": false
+  },
+  "react": {
+    "version": "18.3.1",
+    "path": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\react"
+  },
+  "react-dom": {
+    "version": "18.3.1",
+    "path": "F:\\MIXMLAAL\\apps\\react-admin\\node_modules\\react-dom"
+  },
+  "appJS": {
+    "path": "F:\\MIXMLAAL\\apps\\react-admin\\src\\app.ts",
+    "exports": [
+      "request"
+    ]
+  },
+  "locale": "zh-CN",
+  "globalCSS": [],
+  "globalJS": [],
+  "overridesCSS": [],
+  "bundler": "webpack",
+  "git": {},
+  "framework": "react",
+  "typescript": {
+    "tsVersion": "5.9.3",
+    "tslibVersion": "2.8.1"
+  },
+  "faviconFiles": []
+}

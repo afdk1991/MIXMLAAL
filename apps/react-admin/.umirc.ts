@@ -1,17 +1,6 @@
 import { defineConfig } from '@umijs/max';
-import { resolve } from 'path';
 
 export default defineConfig({
-  antd: {},
-  access: {},
-  model: {},
-  initialState: {},
-  request: {},
-  layout: {
-    title: 'MIXMLAAL Admin',
-    locale: 'zh-CN',
-    logo: '/logo.svg',
-  },
   routes: [
     {
       path: '/user',
@@ -43,7 +32,6 @@ export default defineConfig({
       path: '/admin',
       name: 'admin',
       icon: 'User',
-      access: 'canAdmin',
       routes: [
         {
           path: '/admin/user',
@@ -87,4 +75,5 @@ export default defineConfig({
     },
   },
   mock: false,
+  title: 'MIXMLAAL Admin',
 });

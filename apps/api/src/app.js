@@ -1,108 +1,40 @@
 const express = require('express');
-const helmet = require('helmet');
 const cors = require('cors');
+const compression = require('compression');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const routes = require('./routes');
-const { errorHandler } = require('./middleware/error');
-const apiOptimizer = require('./utils/apiOptimizer');
-const { securityAudit } = require('./middleware/securityAudit');
-const { apiKeyMiddleware, optionalApiKeyMiddleware } = require('./middleware/apiKey');
-const { swaggerSpec, swaggerUi } = require('./utils/swagger');
-const i18n = require('./config/i18n');
-const { getVersionInfo } = require('../../../shared/utils/version.js');
+const { testDatabaseConnection } = require('./config/database');
+const { connectRedis } = require('./config/redis');
+require('dotenv').config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// 加载版本信息
-const versionInfo = getVersionInfo();
-const API_PREFIX = process.env.API_PREFIX || '/api/v1';
-
-// 添加版本信息到响应头
-app.use((req, res, next) => {
-  res.setHeader('X-App-Version', versionInfo.fullVersion);
-  res.setHeader('X-API-Version', '1.0.0');
-  next();
-});
-
-// 版本兼容性检查中间件
-app.use((req, res, next) => {
-  const clientVersion = req.headers['x-client-version'];
-  if (clientVersion) {
-    // 简单的版本兼容性检查
-    const clientParts = clientVersion.split('.').map(Number);
-    const serverParts = versionInfo.version.split('.').map(Number);
-    
-    // 检查主版本号是否兼容
-    if (clientParts[0] !== serverParts[0]) {
-      console.warn(`Version compatibility warning: client=${clientVersion}, server=${versionInfo.version}`);
-      // 可以在这里添加报警逻辑
-    }
-  }
-  next();
-});
-
-app.use(helmet());
-
+// 配置中间件
 app.use(cors());
-
-app.use(securityAudit);
-
-app.use(apiOptimizer.compression);
-app.use(apiOptimizer.rateLimiter);
-app.use(apiOptimizer.requestLogger);
-app.use(apiOptimizer.optimizeResponseTime);
-
+app.use(compression());
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(i18n.init);
-
-app.use(apiOptimizer.cacheControl);
-app.use(apiOptimizer.corsOptimizer);
-app.use(apiOptimizer.versionControl);
-
-app.use(apiOptimizer.batchProcessor);
-
-app.use(`${API_PREFIX}/api-docs`, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-// 添加版本信息端点
-app.get(`${API_PREFIX}/version`, (req, res) => {
-  res.json({
-    code: 200,
-    message: 'success',
-    data: versionInfo
-  });
+// 速率限制
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15分钟
+  max: 100, // 每个IP限制100个请求
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    code: 10005,
+    message: '请求过于频繁，请稍后再试',
+    data: null
+  }
 });
 
-// 添加API密钥验证中间件
-app.use(`${API_PREFIX}/ai`, apiKeyMiddleware);
-app.use(`${API_PREFIX}/blockchain`, apiKeyMiddleware);
-app.use(`${API_PREFIX}/5g`, apiKeyMiddleware);
-app.use(`${API_PREFIX}/admin`, apiKeyMiddleware);
+app.use(limiter);
 
-// 其他接口使用可选API密钥验证
-app.use(`${API_PREFIX}/user`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/shop`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/product`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/order`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/payment`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/ride`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/food`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/errand`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/logistics`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/analytics`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/dispatch`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/coupon`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/membership`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/growth`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/social`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/notification`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/content`, optionalApiKeyMiddleware);
-app.use(`${API_PREFIX}/compliance`, optionalApiKeyMiddleware);
-
-app.use(API_PREFIX, routes);
-
-// 错误处理中间件
-app.use(errorHandler);
+// 注册路由
+app.use('/api/v1', routes);
 
 // 404处理
 app.use((req, res) => {
@@ -113,11 +45,36 @@ app.use((req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 8080;
-
-app.listen(PORT, () => {
-  console.log(`MIXMLAAL API Server Version: ${versionInfo.fullVersion}`);
-  console.log(`Server running on port ${PORT}`);
+// 错误处理中间件
+app.use((err, req, res, next) => {
+  console.error('错误:', err);
+  res.status(500).json({
+    code: 40001,
+    message: '服务器内部错误',
+    data: null
+  });
 });
+
+// 启动服务器
+const startServer = async () => {
+  try {
+    // 测试数据库连接
+    await testDatabaseConnection();
+    
+    // 连接Redis
+    await connectRedis();
+    
+    // 启动服务器
+    app.listen(PORT, () => {
+      console.log(`服务器已启动，监听端口 ${PORT}`);
+      console.log(`API文档地址: http://localhost:${PORT}/api/v1/api-docs`);
+    });
+  } catch (error) {
+    console.error('启动服务器失败:', error);
+    process.exit(1);
+  }
+};
+
+startServer();
 
 module.exports = app;
