@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "kafkajs": "^2.2.4",
-    "uuid": "^11.1.0",
+    "uuid": "^14.0.0",
     "winston": "^3.19.0"
   },
   "devDependencies": {
