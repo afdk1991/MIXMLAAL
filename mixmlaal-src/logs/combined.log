@@ -1,0 +1,297 @@
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 345ms - ::ffff:127.0.0.1","timestamp":"2026-04-09 20:08:29:829"}
+{"duration":"3648ms","level":"warn","message":"慢链路追踪: GET /api/v1/health 耗时 3648ms","span":"GET /api/v1/health","tags":{"http.method":"GET","http.remote_addr":"::ffff:127.0.0.1","http.status_code":200,"http.url":"/api/v1/health"},"timestamp":"2026-04-09 20:08:33:833","traceId":"jr554vqbwv"}
+{"duration":"3675.84ms","endpoint":"GET /api/v1/health","level":"warn","message":"慢请求警告: GET /api/v1/health 耗时 3675.84ms","statusCode":200,"timestamp":"2026-04-09 20:08:33:833"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 3ms - ::ffff:127.0.0.1","timestamp":"2026-04-09 20:08:33:833"}
+{"level":"warn","message":"POST /api/v1/auth/login 400 - 2ms - ::ffff:127.0.0.1","timestamp":"2026-04-09 20:08:33:833"}
+{"level":"warn","message":"POST /api/v1/ride/estimate 400 - 4ms - ::ffff:127.0.0.1","timestamp":"2026-04-09 20:08:33:833"}
+{"level":"warn","message":"POST /api/v1/payment/create 400 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-09 20:08:34:834"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 159ms - ::ffff:127.0.0.1","timestamp":"2026-04-09 20:16:59:1659"}
+{"duration":"1912ms","level":"warn","message":"慢链路追踪: GET /api/v1/health 耗时 1912ms","span":"GET /api/v1/health","tags":{"http.method":"GET","http.remote_addr":"::ffff:127.0.0.1","http.status_code":200,"http.url":"/api/v1/health"},"timestamp":"2026-04-09 20:17:02:172","traceId":"do5d1nzf9k9"}
+{"duration":"1933.05ms","endpoint":"GET /api/v1/health","level":"warn","message":"慢请求警告: GET /api/v1/health 耗时 1933.05ms","statusCode":200,"timestamp":"2026-04-09 20:17:02:172"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 2ms - ::ffff:127.0.0.1","timestamp":"2026-04-09 20:17:02:172"}
+{"level":"warn","message":"POST /api/v1/auth/login 400 - 4ms - ::ffff:127.0.0.1","timestamp":"2026-04-09 20:17:02:172"}
+{"level":"warn","message":"POST /api/v1/ride/estimate 400 - 3ms - ::ffff:127.0.0.1","timestamp":"2026-04-09 20:17:02:172"}
+{"level":"warn","message":"POST /api/v1/payment/create 400 - 4ms - ::ffff:127.0.0.1","timestamp":"2026-04-09 20:17:03:173"}
+{"duration":"1929ms","level":"warn","message":"慢链路追踪: GET /api/v1/health 耗时 1929ms","span":"GET /api/v1/health","tags":{"http.method":"GET","http.remote_addr":"127.0.0.1","http.status_code":200,"http.url":"/api/v1/health","http.user_agent":"Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8115"},"timestamp":"2026-04-10 21:19:09:199","traceId":"d03fo6u5tbk"}
+{"duration":"1930.29ms","endpoint":"GET /api/v1/health","level":"warn","message":"慢请求警告: GET /api/v1/health 耗时 1930.29ms","statusCode":200,"timestamp":"2026-04-10 21:19:09:199"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 379ms - 127.0.0.1","timestamp":"2026-04-10 21:21:03:213"}
+{"level":"warn","message":"系统告警 CPU负载警告: 85.5%","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"warn","message":"系统告警 内存使用率警告: 90%","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"warn","message":"系统告警 平均响应时间警告: 600ms","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"warn","message":"系统告警 错误率警告: 8.00%","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-10 22:58:31:5831"}
+{"level":"warn","message":"系统告警 CPU负载警告: 85.5%","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"warn","message":"系统告警 内存使用率警告: 90%","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"warn","message":"系统告警 平均响应时间警告: 600ms","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"warn","message":"系统告警 错误率警告: 8.00%","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 22:34:01:341"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 233ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 22:34:11:3411"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 75ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 22:34:11:3411"}
+{"duration":"2594ms","level":"warn","message":"慢链路追踪: GET /api/v1/health 耗时 2594ms","span":"GET /api/v1/health","tags":{"http.method":"GET","http.remote_addr":"::ffff:127.0.0.1","http.status_code":200,"http.url":"/api/v1/health"},"timestamp":"2026-04-14 22:34:14:3414","traceId":"pfbhfmvs2"}
+{"duration":"2596.67ms","endpoint":"GET /api/v1/health","level":"warn","message":"慢请求警告: GET /api/v1/health 耗时 2596.67ms","statusCode":200,"timestamp":"2026-04-14 22:34:14:3414"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 22:34:14:3414"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 67ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 22:34:14:3414"}
+{"level":"warn","message":"POST /api/v1/auth/login 400 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 22:34:14:3414"}
+{"level":"warn","message":"POST /api/v1/ride/estimate 400 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 22:34:14:3414"}
+{"level":"warn","message":"系统告警 CPU负载警告: 85.5%","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"warn","message":"系统告警 内存使用率警告: 90%","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"warn","message":"系统告警 平均响应时间警告: 600ms","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"warn","message":"系统告警 错误率警告: 8.00%","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-14 23:45:12:4512"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 15ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 23:45:13:4513"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 72ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 23:45:13:4513"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 0ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 23:45:13:4513"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 66ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 23:45:13:4513"}
+{"level":"warn","message":"POST /api/v1/auth/login 400 - 0ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 23:45:13:4513"}
+{"level":"warn","message":"POST /api/v1/ride/estimate 400 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-14 23:45:13:4513"}
+{"level":"warn","message":"系统告警 CPU负载警告: 85.5%","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"warn","message":"系统告警 内存使用率警告: 90%","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"warn","message":"系统告警 平均响应时间警告: 600ms","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"warn","message":"系统告警 错误率警告: 8.00%","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-15 21:12:46:1246"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 328ms - ::ffff:127.0.0.1","timestamp":"2026-04-15 21:12:59:1259"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 71ms - ::ffff:127.0.0.1","timestamp":"2026-04-15 21:12:59:1259"}
+{"duration":"3792ms","level":"warn","message":"慢链路追踪: GET /api/v1/health 耗时 3792ms","span":"GET /api/v1/health","tags":{"http.method":"GET","http.remote_addr":"::ffff:127.0.0.1","http.status_code":200,"http.url":"/api/v1/health"},"timestamp":"2026-04-15 21:13:03:133","traceId":"zx6x8yd1cx"}
+{"duration":"3794.16ms","endpoint":"GET /api/v1/health","level":"warn","message":"慢请求警告: GET /api/v1/health 耗时 3794.16ms","statusCode":200,"timestamp":"2026-04-15 21:13:03:133"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 2ms - ::ffff:127.0.0.1","timestamp":"2026-04-15 21:13:03:133"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 70ms - ::ffff:127.0.0.1","timestamp":"2026-04-15 21:13:03:133"}
+{"level":"warn","message":"POST /api/v1/auth/login 400 - 0ms - ::ffff:127.0.0.1","timestamp":"2026-04-15 21:13:03:133"}
+{"level":"warn","message":"POST /api/v1/ride/estimate 400 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-15 21:13:03:133"}
+{"level":"warn","message":"系统告警 CPU负载警告: 85.5%","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"warn","message":"系统告警 内存使用率警告: 90%","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"warn","message":"系统告警 平均响应时间警告: 600ms","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"warn","message":"系统告警 错误率警告: 8.00%","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:34:59:3459"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 440ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:35:05:355"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 112ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:35:05:355"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:35:06:356"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 75ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:35:06:356"}
+{"level":"warn","message":"POST /api/v1/auth/login 400 - 0ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:35:06:356"}
+{"level":"warn","message":"POST /api/v1/ride/estimate 400 - 0ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:35:06:356"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"warn","message":"系统告警 CPU负载警告: 85.5%","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"warn","message":"系统告警 内存使用率警告: 90%","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"warn","message":"系统告警 平均响应时间警告: 600ms","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"warn","message":"系统告警 错误率警告: 8.00%","timestamp":"2026-04-17 21:44:10:4410"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 41ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:44:12:4412"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 87ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:44:12:4412"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:44:12:4412"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 66ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:44:12:4412"}
+{"level":"warn","message":"POST /api/v1/auth/login 400 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:44:12:4412"}
+{"level":"warn","message":"POST /api/v1/ride/estimate 400 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:44:13:4413"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:45:56:4556"}
+{"level":"warn","message":"系统告警 CPU负载警告: 85.5%","timestamp":"2026-04-17 21:45:57:4557"}
+{"level":"warn","message":"系统告警 内存使用率警告: 90%","timestamp":"2026-04-17 21:45:57:4557"}
+{"level":"warn","message":"系统告警 平均响应时间警告: 600ms","timestamp":"2026-04-17 21:45:57:4557"}
+{"level":"warn","message":"系统告警 错误率警告: 8.00%","timestamp":"2026-04-17 21:45:57:4557"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 22ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:45:58:4558"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 75ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:45:58:4558"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:45:58:4558"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 65ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:45:58:4558"}
+{"level":"warn","message":"POST /api/v1/auth/login 400 - 2ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:45:58:4558"}
+{"level":"warn","message":"POST /api/v1/ride/estimate 400 - 2ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:45:58:4558"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 21:46:53:4653"}
+{"level":"warn","message":"系统告警 CPU负载警告: 85.5%","timestamp":"2026-04-17 21:46:55:4655"}
+{"level":"warn","message":"系统告警 内存使用率警告: 90%","timestamp":"2026-04-17 21:46:55:4655"}
+{"level":"warn","message":"系统告警 平均响应时间警告: 600ms","timestamp":"2026-04-17 21:46:55:4655"}
+{"level":"warn","message":"系统告警 错误率警告: 8.00%","timestamp":"2026-04-17 21:46:55:4655"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 25ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:46:55:4655"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 80ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:46:56:4656"}
+{"level":"warn","message":"POST /api/v1/auth/register 409 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:46:56:4656"}
+{"level":"warn","message":"POST /api/v1/auth/login 401 - 70ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:46:56:4656"}
+{"level":"warn","message":"POST /api/v1/auth/login 400 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:46:56:4656"}
+{"level":"warn","message":"POST /api/v1/ride/estimate 400 - 1ms - ::ffff:127.0.0.1","timestamp":"2026-04-17 21:46:56:4656"}
+{"level":"warn","message":"系统告警 CPU负载警告: 85.5%","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"warn","message":"系统告警 内存使用率警告: 90%","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"warn","message":"系统告警 平均响应时间警告: 600ms","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"warn","message":"系统告警 错误率警告: 8.00%","timestamp":"2026-04-17 22:22:49:2249"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:48:2248"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:48:2248"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:48:2248"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:49:2249"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:49:2249"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:49:2249"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:49:2249"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:49:2249"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:49:2249"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:49:2249"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:49:2249"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:49:2249"}
+{"connectionLimit":50,"database":"mixmlaal","host":"localhost","level":"info","message":"数据库连接池初始化成功","timestamp":"2026-04-17 22:22:49:2249"}
+{"level":"info","message":"数据库连接池已关闭","timestamp":"2026-04-17 22:22:49:2249"}

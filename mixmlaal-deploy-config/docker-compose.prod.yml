@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  # Redis cache service
+  redis:
+    image: redis:7.0-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: always
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # MySQL database service
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mixmlaal
+      - MYSQL_USER=mixmlaal
+      - MYSQL_PASSWORD=mixmlaal
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # API service
+  api:
+    build:
+      context: ./mixmlaal-apps/mixmlaal-api-node
+      dockerfile: ../mixmlaal-deploy-config/Dockerfile
+    ports:
+      - "80:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=mixmlaal
+      - MYSQL_USER=mixmlaal
+      - MYSQL_PASSWORD=mixmlaal
+    depends_on:
+      - redis
+      - mysql
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - api-logs:/app/logs
+
+  # Frontend service (Nginx)
+  frontend:
+    build:
+      context: ./mixmlaal-apps/mixmlaal-frontend-vue
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  redis-data:
+  mysql-data:
+  api-logs:

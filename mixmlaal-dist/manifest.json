@@ -1,0 +1,121 @@
+{
+  "name": "MIXMLAAL 米小米拉阿狸",
+  "short_name": "MIXMLAAL",
+  "description": "全球卓越的一站式多元化出行+本地生活生态平台",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["lifestyle", "travel", "shopping"],
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "首页"
+    },
+    {
+      "src": "/screenshots/screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "出行服务"
+    },
+    {
+      "src": "/screenshots/screenshot3.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "移动端首页"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "立即叫车",
+      "short_name": "叫车",
+      "description": "快速呼叫网约车",
+      "url": "/ride/ride/?action=call",
+      "icons": [{ "src": "/icons/ride-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "我的订单",
+      "short_name": "订单",
+      "description": "查看我的订单",
+      "url": "/user/profile/?tab=orders",
+      "icons": [{ "src": "/icons/orders-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "商城",
+      "short_name": "商城",
+      "description": "浏览商品",
+      "url": "/ecommerce/mall/",
+      "icons": [{ "src": "/icons/mall-96x96.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.mixmlaal.app",
+      "id": "com.mixmlaal.app"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/app/mixmlaal/id1234567890"
+    }
+  ],
+  "prefer_related_applications": true
+}

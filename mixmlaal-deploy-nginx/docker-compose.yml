@@ -1,0 +1,258 @@
+version: '3.8'
+
+services:
+  # Nginx 反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: mixmlaal-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./mixmlaal-conf-d/laal.top.conf:/etc/nginx/conf.d/laal.top.conf:ro
+      - ./mixmlaal-logs:/var/log/nginx
+    depends_on:
+      - mixmlaal-frontend-vue
+      - mixmlaal-api-node
+      - mixmlaal-admin-vue
+      - mixmlaal-admin-react
+      - mixmlaal-driver-vue
+      - mixmlaal-merchant-vue
+      - mixmlaal-h5-vue
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # 前端主站
+  mixmlaal-frontend-vue:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-frontend-vue
+      dockerfile: Dockerfile
+    container_name: mixmlaal-frontend-vue
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+      - VITE_API_BASE_URL=/api
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # API 服务
+  mixmlaal-api-node:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-api-node
+      dockerfile: Dockerfile
+    container_name: mixmlaal-api-node
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=mixmlaal
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - mysql
+      - redis
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # 管理后台 Vue
+  mixmlaal-admin-vue:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-admin-vue
+      dockerfile: Dockerfile
+    container_name: mixmlaal-admin-vue
+    ports:
+      - "3001:80"
+    environment:
+      - NODE_ENV=production
+      - VITE_API_BASE_URL=/api
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # 管理后台 React
+  mixmlaal-admin-react:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-admin-react
+      dockerfile: Dockerfile
+    container_name: mixmlaal-admin-react
+    ports:
+      - "3002:80"
+    environment:
+      - NODE_ENV=production
+      - UMI_APP_API_BASE_URL=/api
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # 司机端
+  mixmlaal-driver-vue:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-driver-vue
+      dockerfile: Dockerfile
+    container_name: mixmlaal-driver-vue
+    ports:
+      - "3003:80"
+    environment:
+      - NODE_ENV=production
+      - VITE_API_BASE_URL=/api
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # 商户端
+  mixmlaal-merchant-vue:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-merchant-vue
+      dockerfile: Dockerfile
+    container_name: mixmlaal-merchant-vue
+    ports:
+      - "3004:80"
+    environment:
+      - NODE_ENV=production
+      - VITE_API_BASE_URL=/api
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # H5 移动端
+  mixmlaal-h5-vue:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-h5-vue
+      dockerfile: Dockerfile
+    container_name: mixmlaal-h5-vue
+    ports:
+      - "3005:80"
+    environment:
+      - NODE_ENV=production
+      - VITE_API_BASE_URL=/api
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # RuoYi Vue
+  mixmlaal-ruoyi-vue:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-ruoyi-vue
+      dockerfile: Dockerfile
+    container_name: mixmlaal-ruoyi-vue
+    ports:
+      - "3006:80"
+    environment:
+      - NODE_ENV=production
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # Spring Boot Admin
+  mixmlaal-admin-springboot:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-admin-springboot
+      dockerfile: Dockerfile
+    container_name: mixmlaal-admin-springboot
+    ports:
+      - "3007:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # Spring Cloud Admin
+  mixmlaal-admin-springcloud:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-admin-springcloud
+      dockerfile: Dockerfile
+    container_name: mixmlaal-admin-springcloud
+    ports:
+      - "3008:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # HarmonyOS UniApp
+  mixmlaal-harmony-uniapp:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-harmony-uniapp
+      dockerfile: Dockerfile
+    container_name: mixmlaal-harmony-uniapp
+    ports:
+      - "3009:80"
+    environment:
+      - NODE_ENV=production
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # 静态资源服务
+  mixmlaal-static-assets:
+    image: nginx:alpine
+    container_name: mixmlaal-static-assets
+    ports:
+      - "3010:80"
+    volumes:
+      - ../mixmlaal-static-assets:/usr/share/nginx/html:ro
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # 后端 Node 服务
+  mixmlaal-backend-node:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-backend-node
+      dockerfile: Dockerfile
+    container_name: mixmlaal-backend-node
+    ports:
+      - "3011:8080"
+    environment:
+      - NODE_ENV=production
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # Redis 缓存
+  redis:
+    image: redis:7-alpine
+    container_name: mixmlaal-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    restart: always
+    networks:
+      - mixmlaal-network
+
+  # MySQL 数据库
+  mysql:
+    image: mysql:8
+    container_name: mixmlaal-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root123}
+      - MYSQL_DATABASE=mixmlaal
+      - MYSQL_USER=mixmlaal
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-mixmlaal123}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mixmlaal-conf-d/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+    restart: always
+    networks:
+      - mixmlaal-network
+
+networks:
+  mixmlaal-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+  mysql-data:

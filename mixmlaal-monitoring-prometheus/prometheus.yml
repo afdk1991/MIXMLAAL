@@ -1,0 +1,60 @@
+# ============================================
+# Prometheus 配置文件
+# 适配服务器: OpenCloudOS 8
+# 服务器: 110.42.133.52 (公网) / 10.0.4.12 (内网)
+# 资源配置: 4核CPU / 4GB内存 / 70GB系统盘 / 600GB流量包
+# 版本: v2.45.0
+# ============================================
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'mixmlaal-opencloudos8'
+    server_ip: '110.42.133.52'
+    server_name: 'OpenCloudOS 8'
+    traffic_reset: '2026-05-13'
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+rule_files:
+  - "alert.rules.yml"
+
+scrape_configs:
+  # API 服务监控 (轻量级部署)
+  - job_name: 'mixmlaal-api'
+    static_configs:
+      - targets: ['mixmlaal-api-node:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+
+  # Nginx 监控
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx:80']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # MySQL 监控
+  - job_name: 'mysql'
+    static_configs:
+      - targets: ['mysql:3306']
+    metrics_path: '/metrics'
+    scrape_interval: 20s
+
+  # Redis 监控
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+    metrics_path: '/metrics'
+    scrape_interval: 20s
+
+  # Prometheus 自身监控
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']

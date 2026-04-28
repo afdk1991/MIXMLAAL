@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">MIXMLAAL APP</string>
-    <string name="title_activity_main">MIXMLAAL APP</string>
-    <string name="package_name">com.mixmlaal.app</string>
-    <string name="custom_url_scheme">com.mixmlaal.app</string>
-</resources>

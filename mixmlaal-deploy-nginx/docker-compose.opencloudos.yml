@@ -1,0 +1,238 @@
+# ============================================
+# MIXMLAAL 轻量级部署配置 (OpenCloudOS 8 优化版)
+# 镜像名称: OpenCloudOS8-Docker26
+# 镜像类型: Docker基础镜像
+# 操作系统: OpenCloudOS 8
+# 适配服务器: 4核CPU / 4GB内存 / 70GB系统盘 / 600GB流量包
+# 服务器IP: 110.42.133.52 (公网) / 10.0.4.12 (内网)
+# 流量包重置时间: 2026-05-13 20:21:36
+# 版本: v1.0.0.0
+# ============================================
+
+version: '3.8'
+
+services:
+  # Nginx 反向代理 (OpenCloudOS 8 优化版)
+  nginx:
+    image: opencloudos/opencloudos:8
+    command: ["nginx", "-g", "daemon off;"]
+    container_name: mixmlaal-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./mixmlaal-conf-d/laal.top.conf:/etc/nginx/conf.d/laal.top.conf:ro
+      - ./mixmlaal-logs:/var/log/nginx
+    depends_on:
+      - mixmlaal-api-node
+      - mixmlaal-frontend-vue
+    restart: always
+    networks:
+      - mixmlaal-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # API 服务 (OpenCloudOS 8 优化版)
+  mixmlaal-api-node:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-api-node
+      dockerfile: Dockerfile.opencloudos
+    container_name: mixmlaal-api-node
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=mixmlaal
+      - MYSQL_USER=mixmlaal
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-mixmlaal123}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_MAX_MEMORY=256mb
+      - NODE_OPTIONS=--max-old-space-size=512
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: always
+    networks:
+      - mixmlaal-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 768M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - api-logs:/app/logs
+
+  # 前端主站 (OpenCloudOS 8 优化版)
+  mixmlaal-frontend-vue:
+    build:
+      context: ../mixmlaal-apps/mixmlaal-frontend-vue
+      dockerfile: Dockerfile.opencloudos
+    container_name: mixmlaal-frontend-vue
+    ports:
+      - "3000:80"
+    restart: always
+    networks:
+      - mixmlaal-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis 缓存 (优化内存限制)
+  redis:
+    image: redis:7-alpine
+    container_name: mixmlaal-redis
+    ports:
+      - "6379:6379"
+    command: >
+      redis-server
+      --appendonly yes
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+      --maxmemory-samples 3
+      --lazyfree-lazy-eviction yes
+      --lazyfree-lazy-expire yes
+    volumes:
+      - redis-data:/data
+    restart: always
+    networks:
+      - mixmlaal-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 320M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # MySQL 数据库 (优化内存限制)
+  mysql:
+    image: mysql:8
+    container_name: mixmlaal-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root123}
+      - MYSQL_DATABASE=mixmlaal
+      - MYSQL_USER=mixmlaal
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-mixmlaal123}
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --innodb-buffer-pool-size=256M
+      --innodb-log-file-size=64M
+      --innodb-flush-log-at-trx-commit=2
+      --innodb-flush-method=O_DIRECT
+      --max-connections=100
+      --key-buffer-size=32M
+      --query-cache-type=0
+      --query-cache-size=0
+      --tmp-table-size=16M
+      --max-heap-table-size=16M
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mixmlaal-conf-d/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+    restart: always
+    networks:
+      - mixmlaal-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1024M
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # Prometheus 监控 (轻量级)
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    container_name: mixmlaal-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./mixmlaal-prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=7d'
+      - '--storage.tsdb.storage.memory.samples=256'
+    restart: always
+    networks:
+      - mixmlaal-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  mixmlaal-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+volumes:
+  redis-data:
+    driver: local
+  mysql-data:
+    driver: local
+  api-logs:
+    driver: local
+  prometheus-data:
+    driver: local

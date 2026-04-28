@@ -1,0 +1,259 @@
+# ============================================
+# MIXMLAAL Prometheus 告警规则配置
+# 适配服务器: 110.42.133.52 (公网) / 10.0.4.12 (内网)
+# 资源配置: 4核CPU / 4GB内存 / 70GB系统盘 / 600GB流量包
+# 流量包重置时间: 2026-05-13 20:21:36
+# 版本: v1.0.0.0
+# ============================================
+
+groups:
+  # 流量包告警规则
+  - name: traffic_alerts
+    interval: 60s
+    rules:
+      # 流量包使用率告警 (80% 阈值)
+      - alert: TrafficPackageUsageHigh
+        expr: |
+          (node_network_receive_bytes_total{device!="lo"} - ignoring(device) group_left)
+          (rate(node_network_receive_bytes_total{device!="lo"}[5m]) * 86400 / 1024 / 1024 / 1024)
+          > 480  # 600GB * 0.8 = 480GB
+        for: 5m
+        labels:
+          severity: warning
+          server: opencloudos8
+          public_ip: "110.42.133.52"
+        annotations:
+          summary: "流量包使用率过高"
+          description: "流量包使用率已超过 80%，当前使用量: {{ $value | printf \"%.2f\" }} GB/600GB"
+          traffic_reset_date: "2026-05-13 20:21:36"
+          recommendation: "建议优化资源使用或升级流量包"
+
+      # 流量包使用率严重告警 (90% 阈值)
+      - alert: TrafficPackageUsageCritical
+        expr: |
+          (node_network_receive_bytes_total{device!="lo"} - ignoring(device) group_left)
+          (rate(node_network_receive_bytes_total{device!="lo"}[5m]) * 86400 / 1024 / 1024 / 1024)
+          > 540  # 600GB * 0.9 = 540GB
+        for: 5m
+        labels:
+          severity: critical
+          server: opencloudos8
+          public_ip: "110.42.133.52"
+        annotations:
+          summary: "流量包即将耗尽"
+          description: "流量包使用率已超过 90%，当前使用量: {{ $value | printf \"%.2f\" }} GB/600GB"
+          traffic_reset_date: "2026-05-13 20:21:36"
+          recommendation: "紧急: 请立即处理，避免流量耗尽影响服务"
+
+      # 公网带宽使用告警
+      - alert: BandwidthUsageHigh
+        expr: |
+          (rate(node_network_receive_bytes_total{device!="lo"}[5m]) * 8 / 1024 / 1024) > 10
+          or
+          (rate(node_network_transmit_bytes_total{device!="lo"}[5m]) * 8 / 1024 / 1024) > 10
+        for: 10m
+        labels:
+          severity: warning
+          server: opencloudos8
+        annotations:
+          summary: "公网带宽使用率较高"
+          description: "带宽使用率: 入方向 {{ printf \"%.2f\" (rate(node_network_receive_bytes_total{device!=\"lo\"}[5m]) * 8 / 1024 / 1024) }} Mbps, 出方向 {{ printf \"%.2f\" (rate(node_network_transmit_bytes_total{device!=\"lo\"}[5m]) * 8 / 1024 / 1024) }} Mbps"
+
+  # 系统盘告警规则
+  - name: disk_alerts
+    interval: 60s
+    rules:
+      # 系统盘使用率告警 (80% 阈值)
+      - alert: SystemDiskUsageHigh
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 < 20
+        for: 5m
+        labels:
+          severity: warning
+          server: opencloudos8
+          disk_total: "70GB"
+        annotations:
+          summary: "系统盘使用率过高"
+          description: "系统盘使用率已超过 80%，当前使用: {{ printf \"%.2f\" (100 - ($value | float)) }}%, 可用空间: {{ $value | printf \"%.2f\" }} GB"
+          recommendation: "建议清理日志文件或扩展磁盘空间"
+
+      # 系统盘使用率严重告警 (90% 阈值)
+      - alert: SystemDiskUsageCritical
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 < 10
+        for: 5m
+        labels:
+          severity: critical
+          server: opencloudos8
+          disk_total: "70GB"
+        annotations:
+          summary: "系统盘空间即将耗尽"
+          description: "系统盘使用率已超过 90%，当前可用空间不足 7GB"
+          recommendation: "紧急: 请立即清理磁盘空间，避免服务中断"
+
+      # 磁盘IO告警
+      - alert: DiskIOHigh
+        expr: rate(node_disk_io_time_seconds_total[5m]) * 100 > 80
+        for: 10m
+        labels:
+          severity: warning
+          server: opencloudos8
+        annotations:
+          summary: "磁盘IO使用率较高"
+          description: "磁盘IO使用率: {{ $value | printf \"%.2f\" }}%"
+          recommendation: "建议优化磁盘读写或升级存储"
+
+  # CPU告警规则
+  - name: cpu_alerts
+    interval: 30s
+    rules:
+      # CPU使用率告警 (70% 阈值)
+      - alert: CPUUsageHigh
+        expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 70
+        for: 10m
+        labels:
+          severity: warning
+          server: opencloudos8
+          cpu_cores: "4"
+        annotations:
+          summary: "CPU使用率较高"
+          description: "CPU使用率已持续超过 70%，当前: {{ $value | printf \"%.2f\" }}%"
+          recommendation: "建议优化应用性能或升级CPU"
+
+      # CPU使用率严重告警 (90% 阈值)
+      - alert: CPUUsageCritical
+        expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 90
+        for: 5m
+        labels:
+          severity: critical
+          server: opencloudos8
+          cpu_cores: "4"
+        annotations:
+          summary: "CPU使用率严重过高"
+          description: "CPU使用率已持续超过 90%，当前: {{ $value | printf \"%.2f\" }}%，服务可能响应缓慢"
+          recommendation: "紧急: 请立即检查高负载进程"
+
+  # 内存告警规则
+  - name: memory_alerts
+    interval: 30s
+    rules:
+      # 内存使用率告警 (80% 阈值)
+      - alert: MemoryUsageHigh
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 80
+        for: 10m
+        labels:
+          severity: warning
+          server: opencloudos8
+          memory_total: "4GB"
+        annotations:
+          summary: "内存使用率较高"
+          description: "内存使用率已超过 80%，当前: {{ $value | printf \"%.2f\" }}%，可用: {{ $1 | printf \"%.0f\" }} MB"
+          recommendation: "建议优化内存使用或增加物理内存"
+
+      # 内存使用率严重告警 (90% 阈值)
+      - alert: MemoryUsageCritical
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 90
+        for: 5m
+        labels:
+          severity: critical
+          server: opencloudos8
+          memory_total: "4GB"
+        annotations:
+          summary: "内存即将耗尽"
+          description: "内存使用率已超过 90%，当前: {{ $value | printf \"%.2f\" }}%"
+          recommendation: "紧急: 请立即释放内存或增加物理内存"
+
+      # 内存不足告警 (可用小于 10%)
+      - alert: MemoryAvailableLow
+        expr: (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 < 10
+        for: 5m
+        labels:
+          severity: critical
+          server: opencloudos8
+          memory_total: "4GB"
+        annotations:
+          summary: "可用内存严重不足"
+          description: "可用内存低于 10%，当前可用: {{ $value | printf \"%.0f\" }} MB"
+          recommendation: "紧急: 系统可能发生内存泄漏，请立即处理"
+
+  # Docker 容器告警规则
+  - name: container_alerts
+    interval: 30s
+    rules:
+      # 容器重启告警
+      - alert: ContainerRestarted
+        expr: rate(container_restart_count[5m]) > 0
+        for: 1m
+        labels:
+          severity: warning
+          server: opencloudos8
+        annotations:
+          summary: "容器发生重启"
+          description: "容器 {{ $labels.name }} 发生了重启，5分钟内重启次数: {{ $value | printf \"%.0f\" }}"
+          recommendation: "请检查容器日志排查重启原因"
+
+      # 容器内存使用告警
+      - alert: ContainerMemoryHigh
+        expr: container_memory_usage_bytes / container_spec_memory_limit_bytes * 100 > 80
+        for: 10m
+        labels:
+          severity: warning
+          server: opencloudos8
+        annotations:
+          summary: "容器内存使用率较高"
+          description: "容器 {{ $labels.name }} 内存使用率: {{ $value | printf \"%.2f\" }}%"
+          recommendation: "建议增加容器内存限制或优化内存使用"
+
+      # API 服务不可用告警
+      - alert: APIServiceDown
+        expr: up{job="mixmlaal-api"} == 0
+        for: 2m
+        labels:
+          severity: critical
+          server: opencloudos8
+        annotations:
+          summary: "API 服务不可用"
+          description: "API 服务 (mixmlaal-api-node) 已经停止响应"
+          recommendation: "紧急: 请立即检查 API 容器状态和日志"
+
+  # 网络连接告警规则
+  - name: network_alerts
+    interval: 60s
+    rules:
+      # TIME_WAIT 连接过多
+      - alert: TimeWaitConnectionsHigh
+        expr: (netstat_tcp_state{state="TIME_WAIT"} / netstat_tcp_max_sessions) * 100 > 30
+        for: 10m
+        labels:
+          severity: warning
+          server: opencloudos8
+        annotations:
+          summary: "TIME_WAIT 连接过多"
+          description: "TIME_WAIT 连接占比: {{ $value | printf \"%.2f\" }}%"
+          recommendation: "建议优化网络参数或调整连接超时设置"
+
+  # 服务健康检查告警
+  - name: health_alerts
+    interval: 60s
+    rules:
+      # Nginx 健康检查失败
+      - alert: NginxHealthCheckFailed
+        expr: probe_success{job="nginx"} == 0
+        for: 3m
+        labels:
+          severity: critical
+          server: opencloudos8
+        annotations:
+          summary: "Nginx 健康检查失败"
+          description: "Nginx 服务健康检查连续失败超过 3 分钟"
+          recommendation: "紧急: 请检查 Nginx 容器状态和配置"
+
+      # API 健康检查延迟过高
+      - alert: APIHealthCheckSlow
+        expr: probe_http_duration_seconds{job="mixmlaal-api"} > 3
+        for: 5m
+        labels:
+          severity: warning
+          server: opencloudos8
+        annotations:
+          summary: "API 健康检查响应缓慢"
+          description: "API 健康检查响应时间超过 3 秒，当前: {{ $value | printf \"%.2f\" }}秒"
+          recommendation: "建议检查 API 服务性能和数据库连接"
